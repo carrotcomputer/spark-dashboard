@@ -19,6 +19,8 @@ export default Ember.Controller.extend({
       this.set('projectMilestone', '');
       
       project.save();
+      
+      this.transitionTo('current-project');
     }
   }
 });

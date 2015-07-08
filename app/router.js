@@ -8,6 +8,8 @@ var Router = Ember.Router.extend({
 Router.map(function() {
   this.route('dashboard');
   this.route('new-project');
+  this.route('current-project');
+  this.route('traffic-light');
 });
 
 export default Router;

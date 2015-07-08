@@ -1,0 +1,50 @@
+<div id="content">
+  <h1>Add Traffic Light</h1>
+  <br>
+  <p></p>
+  <hr/>
+  <div class="inputLeft">
+    <label class="form-label">Job</label>
+    <br>
+    {{input type="text" placeholder="job" class="inputText" value=job}}
+    <br>
+    <br>
+    <label class="form-label">Deadline</label>
+    <br>
+    {{input type="text" placeholder="deadline" class="inputText" value=deadline}}
+    <br>
+    <br>
+    <label class="form-label">Name</label>
+    <br>
+    {{input type="text" placeholder="person working on the project" class="inputText" value=name}}
+    <br>
+    <br>
+    <label class="form-label">Status</label>
+    <br>
+    <select>
+      <option value="red">Red</option>
+      <option value="amber">Amber</option>
+      <option value="green">Green</option>
+    </select>
+    <br>
+    <br>
+    <button class="btn_sub">Add</button>
+  </div>
+  <div class="outputRight">
+    <div class="traffic-outer">
+      <div class="traffic-inner">
+        <div class="status_3">
+        </div>
+        <div class="status_2">
+        </div>
+        <div class="status_1">
+        </div>
+      </div>
+      <ul class="info">
+        <li>Name</li>
+        <li>Deadline</li>
+        <li>User</li>
+      </ul>
+    </div>
+  </div>
+</div>

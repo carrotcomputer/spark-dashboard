@@ -45,6 +45,7 @@ nav ul li a:hover{
   margin:50px auto 0 auto;;
   background-color:white;
   padding:15px;
+  overflow:auto;
 }
 h1{
   font-size:25px;
@@ -116,4 +117,20 @@ hr{
   width:70px;
   border-radius:100%;
   background: rgb(192, 80, 80);
+}
+.traffic-outer .info{
+  margin-top:20px;
+  text-align:center;
+  list-style:none;
+  background-color:#eee;
+  font-size:13px;
+  border-radius:5px;
+  border:1px solid #ccc;
+}
+.inputLeft{
+  float:left;
+}
+.outputRight{
+  float:right;
+  width:30%;
 }
