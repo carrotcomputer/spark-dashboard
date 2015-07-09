@@ -1,8 +1,10 @@
 <div id="content">
-  <h1>All Projects</h1>
-  
+    <h1>Live Projects</h1>
+    <br>
+  <hr/>
   {{#each proj in model}}
     <div class="card">
+      <button class="delete_card" {{action "deleteCard" proj}}>x</button>
       <div class="left">
         <div class="traffic-outer">
           <div class="traffic-inner">
@@ -40,9 +42,16 @@
           <hr/>
           <li>Date of Milestone: <strong>{{proj.deadline}}</strong></li>
           <li>User Responsible: <strong>{{proj.userName}}</strong></li>
+          <!--<li><button class="btn_edit">Edit</button></li>-->
         </ul>
       </div>
     </div>
+    <hr/>
+    <small>
+      <p><span style="color:red;">Red</span> - There is no control over the project</p>
+      <p><span style="color:orange;">Amber</span> - The project can have control but has not been taken yet</p>
+      <p><span style="color:green;">Green</span> - The project is under control and no further action is required.</p>
+    </small>
     {{else}}
       <h3 class="no_proj">No Live Projects</h3>
       {{#link-to "new-project" class="btn_sub"}}+ New Project{{/link-to}}

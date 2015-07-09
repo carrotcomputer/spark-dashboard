@@ -31,6 +31,12 @@
   <br>
   {{view "select" value=lightStatus content=lStatus }}
   <br>
+  <small>
+    <p><span style="color:red;">Red</span> - There is no control over the project</p>
+    <p><span style="color:orange;">Amber</span> - The project can have control but has not been taken yet</p>
+    <p><span style="color:green;">Green</span> - The project is under control and no further action is required.</p>
+  </small>
+  <br>
   <br>
   <button class="btn_sub" {{action "createProject"}}>Create</button>
 </div>
