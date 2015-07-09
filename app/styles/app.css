@@ -126,6 +126,7 @@ hr{
   margin: 5px 0;
   border-radius:100%;
   background: rgb(238, 238, 238);
+  cursor:pointer;
 }
 .traffic-inner .status_1{
   height:65px;

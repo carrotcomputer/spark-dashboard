@@ -9,26 +9,26 @@
         <div class="traffic-outer">
           <div class="traffic-inner">
             {{#if proj.isRed}}
-              <div class="status_3">
+              <div {{action 'setRed' proj}} class="status_3">
               </div>
             {{else}}
-              <div class="status_0">
+              <div {{action 'setRed' proj}} class="status_0">
               </div>
             {{/if}}
             
             {{#if proj.isAmber}}
-              <div class="status_2">
+              <div {{action 'setAmber' proj}} class="status_2">
               </div>
             {{else}}
-              <div class="status_0">
+              <div {{action 'setAmber' proj}} class="status_0">
               </div>
             {{/if}}
             
             {{#if proj.isGreen}}
-              <div class="status_1">
+              <div {{action 'setGreen' proj}} class="status_1">
               </div>
             {{else}}
-              <div class="status_0">
+              <div {{action 'setGreen' proj}} class="status_0">
               </div>
             {{/if}}
           </div>
@@ -46,14 +46,14 @@
         </ul>
       </div>
     </div>
-    <hr/>
-    <small>
-      <p><span style="color:red;">Red</span> - There is no control over the project</p>
-      <p><span style="color:orange;">Amber</span> - The project can have control but has not been taken yet</p>
-      <p><span style="color:green;">Green</span> - The project is under control and no further action is required.</p>
-    </small>
     {{else}}
       <h3 class="no_proj">No Live Projects</h3>
       {{#link-to "new-project" class="btn_sub"}}+ New Project{{/link-to}}
   {{/each}}
+  <br><br>
+  <small>
+    <p><span style="color:red;">Red</span> - There is no control over the project</p>
+    <p><span style="color:orange;">Amber</span> - The project can have control but has not been taken yet</p>
+    <p><span style="color:green;">Green</span> - The project is under control and no further action is required.</p>
+  </small>
 </div>

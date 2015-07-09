@@ -8,6 +8,30 @@ export default Ember.Controller.extend({
         proj.deleteRecord();
         proj.save();
       }
+    },
+    setRed: function(proj) {
+      proj.setProperties({
+        isRed: true,
+        isAmber: false,
+        isGreen: false
+      });
+      proj.save();
+    },
+    setAmber: function(proj) {
+      proj.setProperties({
+        isRed: false,
+        isAmber: true,
+        isGreen: false
+      });
+      proj.save();
+    },
+    setGreen: function(proj) {
+      proj.setProperties({
+        isRed: false,
+        isAmber: false,
+        isGreen: true
+      });
+      proj.save();
     }
   }
 });
