@@ -10,6 +10,7 @@ Router.map(function() {
   this.route('new-project');
   this.route('current-project');
   this.route('traffic-light');
+  this.route('all-projects');
 });
 
 export default Router;

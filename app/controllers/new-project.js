@@ -10,12 +10,33 @@ export default Ember.Controller.extend({
       var username    = this.get('username');
       var statusLight = this.get('lightStatus');
       
+      var isRed   = false;
+      var isAmber = false;
+      var isGreen = false;
+      
+      if(statusLight === "Red"){
+        isRed = true;
+        isAmber = false;
+        isGreen = false;
+      }else if(statusLight === "Amber"){
+        isAmber = true
+        isRed = false;
+        isGreen = false;
+      }else{
+        isGreen = true;
+        isAmber = false;
+        isRed 
+      }
+      
       var project = this.store.createRecord('project', {
         title: title,
         milestone: milestone,
         deadline: deadline,
         userName: username,
-        lightStatus: statusLight
+        isRed: isRed,
+        isAmber: isAmber,
+        isGreen: isGreen
+        
       });
       
       project.save();
@@ -26,8 +47,6 @@ export default Ember.Controller.extend({
       this.set('deadline', '');
       this.set('username', '');
       
-      
-      //this.store.find(''), params.project_id);..will get the data
       //this.transitionTo('current-project');
     }
   }

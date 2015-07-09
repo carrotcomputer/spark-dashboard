@@ -5,7 +5,9 @@ var Project = DS.Model.extend({
   milestone: DS.attr('string'),
   deadline: DS.attr('string'),
   userName: DS.attr('string'),
-  lightStatus: DS.attr('string')
+  isRed: DS.attr('boolean'),
+  isAmber: DS.attr('boolean'),
+  isGreen: DS.attr('boolean')
 });
 
 export default Project;
