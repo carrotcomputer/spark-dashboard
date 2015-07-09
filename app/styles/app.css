@@ -5,6 +5,7 @@
 body{
   background-color:#eee;
   font-family: 'Oxygen', sans-serif;
+  overflow-y:scroll;
 }
 #navigation{
   width:100%;
@@ -59,6 +60,17 @@ h1{
 }
 p{
   margin:10px 0;
+}
+.error{
+  width:100%;
+  top:-10px;
+  padding:10px;
+  text-align:center;
+  font-size:13px;
+  left:0;
+  position:relative;
+  background-color: rgb(228, 78, 78);
+  color: white;
 }
 hr{
   opacity:0.2;

@@ -1,29 +1,33 @@
 <div id="content">
   <h1>New Project</h1>
   <br>
-  <p></p>
+  {{#if isError}}
+    <p class="error">
+        Please ensure all the required fields contain the correct information
+    </p>
+  {{/if}}
   <hr/>
-  <label class="form-label">Project Title</label>
+  <label class="form-label">Project Title*</label>
   <br>
   {{input type="text" placeholder="project title" name="ProjectTitle" class="inputText" value=projectTitle}}
   <br>
   <br>
-  <label class="form-label">1st Milestone Information</label>
+  <label class="form-label">1st Milestone*</label>
   <br>
   {{textarea placeholder="first milestone..." name="milestone" class="inputText" rows="5" value=projectMilestone}}
   <br>
   <br>
-  <label class="form-label">Deadline</label>
+  <label class="form-label">Deadline*</label>
   <br>
-  {{input type="text" placeholder="deadline" class="inputText" value=deadline}}
+  {{input type="date" placeholder="deadline" class="inputText" value=deadline}}
   <br>
   <br>
-  <label class="form-label">Username</label>
+  <label class="form-label">Username*</label>
   <br>
   {{input type="text" placeholder="person working on the project" class="inputText" value=username}}
   <br>
   <br>
-  <label class="form-label">Status</label>
+  <label class="form-label">Status*</label>
   <br>
   {{view "select" value=lightStatus content=lStatus }}
   <br>

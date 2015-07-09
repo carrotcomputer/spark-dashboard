@@ -2,6 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
   lStatus:["Red","Amber","Green"],
+  isError:false,
   actions: {
     createProject: function(){
       var title       = this.get("projectTitle");
@@ -10,44 +11,48 @@ export default Ember.Controller.extend({
       var username    = this.get('username');
       var statusLight = this.get('lightStatus');
       
-      var isRed   = false;
-      var isAmber = false;
-      var isGreen = false;
+      if(title && milestone && deadline && username && statusLight){
+        var isRed   = false;
+        var isAmber = false;
+        var isGreen = false;
       
-      if(statusLight === "Red"){
-        isRed = true;
-        isAmber = false;
-        isGreen = false;
-      }else if(statusLight === "Amber"){
-        isAmber = true
-        isRed = false;
-        isGreen = false;
-      }else{
-        isGreen = true;
-        isAmber = false;
-        isRed 
-      }
+        if(statusLight === "Red"){
+          isRed = true;
+          isAmber = false;
+          isGreen = false;
+        }else if(statusLight === "Amber"){
+          isAmber = true
+          isRed = false;
+          isGreen = false;
+        }else{
+          isGreen = true;
+          isAmber = false;
+          isRed 
+        }
       
-      var project = this.store.createRecord('project', {
-        title: title,
-        milestone: milestone,
-        deadline: deadline,
-        userName: username,
-        isRed: isRed,
-        isAmber: isAmber,
-        isGreen: isGreen
+        var project = this.store.createRecord('project', {
+          title: title,
+          milestone: milestone,
+          deadline: deadline,
+          userName: username,
+          isRed: isRed,
+          isAmber: isAmber,
+          isGreen: isGreen
         
-      });
+        });
       
-      project.save();
+        project.save();
             
             
-      this.set('projectTitle', '');
-      this.set('projectMilestone', '');
-      this.set('deadline', '');
-      this.set('username', '');
+        this.set('projectTitle', '');
+        this.set('projectMilestone', '');
+        this.set('deadline', '');
+        this.set('username', '');
       
-      //this.transitionTo('current-project');
+        this.transitionTo('all-projects');
+      }else{
+        this.set('isError', true);
+      }
     }
   }
 });
