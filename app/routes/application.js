@@ -2,6 +2,6 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
   afterModel: function(){
-    //this.transitionTo('dashboard');
+    this.transitionTo('dashboard');
   }
 });
