@@ -108,9 +108,9 @@ hr{
   opacity:0.8;
 }
 .traffic-outer{
-  border:1px solid #ccc;
+  /* border:1px solid #ccc; */
   border-radius:5px;
-  background: #3E4245;
+  /* background: #2C2C2C; */
   height:220px;
   width:100px;
   padding:10px;
@@ -124,29 +124,29 @@ hr{
   height:65px;
   width:65px;
   margin: 5px 0;
-  border-radius:100%;
-  background: rgb(238, 238, 238);
+  border-radius:20%;
+  background: rgb(108, 108, 108);
   cursor:pointer;
 }
 .traffic-inner .status_1{
   height:65px;
   width:65px;
   margin: 5px 0;
-  border-radius:100%;
+  border-radius:20%;
   background: rgb(83, 200, 83);
 }
 .traffic-inner .status_2{
   height:65px;
   width:65px;
   margin: 5px 0;
-  border-radius:100%;
+  border-radius:20%;
   background: rgb(255, 171, 77);
 }
 .traffic-inner .status_3{
   height:65px;
   width:65px;
   margin: 5px 0;
-  border-radius:100%;
+  border-radius:20%;
   background: rgb(192, 80, 80);
 }
 .traffic-outer .info{
@@ -174,14 +174,32 @@ hr{
   background-color:white;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.20);
 }
+.card input{
+  border:1px solid #ccc;
+  width:100%;
+  font-weight:bold;
+  padding: 0;
+  padding:5px;
+  font-size:15.5px;
+  height:20px;
+  margin:5px 0 5px 0;
+  font-weight:500;
+}
+.card input:focus{
+  outline:none;
+}
 .card .left{
   float:left;
   width:30%;
 }
+.card p {
+  font-weight:500;
+  font-size:16px;
+}
 .card .right{
   float:left;
   padding:10px;
-  color:#444;
+  color: #2F2F2F;
 }
 .card .right ul li{
   list-style:none;

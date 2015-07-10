@@ -7,7 +7,8 @@ var Project = DS.Model.extend({
   userName: DS.attr('string'),
   isRed: DS.attr('boolean'),
   isAmber: DS.attr('boolean'),
-  isGreen: DS.attr('boolean')
+  isGreen: DS.attr('boolean'),
+  isEditing: DS.attr('boolean', {defaultValue: false})
 });
 
 export default Project;

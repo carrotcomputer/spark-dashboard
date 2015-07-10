@@ -17,17 +17,17 @@ export default Ember.Controller.extend({
         var isGreen = false;
       
         if(statusLight === "Red"){
-          isRed = true;
+          isRed   = true;
           isAmber = false;
           isGreen = false;
         }else if(statusLight === "Amber"){
-          isAmber = true
-          isRed = false;
+          isAmber = true;
+          isRed   = false;
           isGreen = false;
         }else{
           isGreen = true;
           isAmber = false;
-          isRed 
+          isRed   = false;
         }
       
         var project = this.store.createRecord('project', {
