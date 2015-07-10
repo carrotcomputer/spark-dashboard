@@ -44,7 +44,7 @@
             <li>User Responsible: <strong>{{input type="text" class="edit" value=proj.userName focus-out="acceptChanges" insert-newline="acceptChanges"}}</strong></li>
           {{else}}
             <li {{action "editMilestone" proj on="doubleClick" }}><strong>Current Milestone:</strong><p>{{proj.milestone}}</p></li>
-            <li {{action "editMilestone" proj on="doubleClick" }}>Date of Milestone: <strong>{{proj.deadline}}</strong></li>
+            <li {{action "editMilestone" proj on="doubleClick" }}>Date of Milestone: <strong>{{date proj.deadline}}</strong></li>
             <li {{action "editMilestone" proj on="doubleClick" }}>User Responsible: <strong>{{proj.userName}}</strong></li>
           {{/if}}
           

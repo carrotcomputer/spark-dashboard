@@ -7,7 +7,7 @@ export default Ember.Controller.extend({
     createProject: function(){
       var title       = this.get("projectTitle");
       var milestone   = this.get("projectMilestone");
-      var deadline    = this.get('deadline');
+      var deadline    = new Date(this.get('deadline'));
       var username    = this.get('username');
       var statusLight = this.get('lightStatus');
       
@@ -29,7 +29,8 @@ export default Ember.Controller.extend({
           isAmber = false;
           isRed   = false;
         }
-      
+        
+        
         var project = this.store.createRecord('project', {
           title: title,
           milestone: milestone,
