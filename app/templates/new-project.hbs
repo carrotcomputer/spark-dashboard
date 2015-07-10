@@ -7,36 +7,42 @@
     </p>
   {{/if}}
   <hr/>
-  <label class="form-label">Project Title*</label>
-  <br>
-  {{input type="text" placeholder="project title" name="ProjectTitle" class="inputText" value=projectTitle}}
-  <br>
-  <br>
-  <label class="form-label">1st Milestone*</label>
-  <br>
-  {{textarea placeholder="first milestone..." name="milestone" class="inputText" rows="5" value=projectMilestone}}
-  <br>
-  <br>
-  <label class="form-label">Deadline*</label>
-  <br>
-  {{input type="date" placeholder="deadline" class="inputText" value=deadline}}
-  <br>
-  <br>
-  <label class="form-label">Username*</label>
-  <br>
-  {{input type="text" placeholder="person working on the project" class="inputText" value=username}}
-  <br>
-  <br>
-  <label class="form-label">Status*</label>
-  <br>
-  {{view "select" value=lightStatus content=lStatus }}
-  <br>
-  <small>
-    <p><span style="color:red;">Red</span> - There is no control over the project</p>
-    <p><span style="color:orange;">Amber</span> - The project can have control but has not been taken yet</p>
-    <p><span style="color:green;">Green</span> - The project is under control and no further action is required.</p>
-  </small>
-  <br>
-  <br>
-  <button class="btn_sub" {{action "createProject"}}>Create</button>
+  <div class="back">
+    <label class="form-label">Project Title*</label>
+    <br>
+    {{input type="text" placeholder="project title" name="ProjectTitle" class="inputText" value=projectTitle}}
+    <br>
+    <br>
+    <label class="form-label">1st Milestone*</label>
+    <br>
+    {{textarea placeholder="first milestone..." name="milestone" class="inputText" rows="5" value=projectMilestone}}
+    <br>
+    <br>
+    <label class="form-label">Deadline*</label>
+    <br>
+    {{input type="date" placeholder="deadline" class="inputText" value=deadline}}
+    <br>
+    <br>
+    <label class="form-label">User*</label>
+    <br>
+    {{view "select"
+           content=model
+           optionValuePath="content"
+           optionLabelPath="content.userName"
+           value=username}}
+    <br>
+    <br>
+    <label class="form-label">Status*</label>
+    <br>
+    {{view "select" value=lightStatus content=lStatus }}
+    <br>
+    <small>
+      <p><span style="color:red;">Red</span> - There is no control over the project</p>
+      <p><span style="color:orange;">Amber</span> - The project can have control but has not been taken yet</p>
+      <p><span style="color:green;">Green</span> - The project is under control and no further action is required.</p>
+    </small>
+    <br>
+    <br>
+    <button class="btn_sub" {{action "createProject"}}>Create</button>
+  </div>
 </div>

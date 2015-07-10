@@ -29,8 +29,6 @@ export default Ember.Controller.extend({
           isAmber = false;
           isRed   = false;
         }
-        
-        
         var project = this.store.createRecord('project', {
           title: title,
           milestone: milestone,
@@ -49,8 +47,10 @@ export default Ember.Controller.extend({
         this.set('projectMilestone', '');
         this.set('deadline', '');
         this.set('username', '');
-      
+        
+        this.set('isError',false);
         this.transitionTo('all-projects');
+        
       }else{
         this.set('isError', true);
       }

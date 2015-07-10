@@ -41,11 +41,13 @@
           {{#if proj.isEditing}}
             <li><strong>Edit Milestone:</strong>{{input type="text" class="edit" value=proj.milestone focus-out="acceptChanges" insert-newline="acceptChanges"}}</li>
             <li>Date of Milestone: <strong>{{input type="date" class="edit" value=proj.deadline focus-out="acceptChanges" insert-newline="acceptChanges"}}</strong></li>
-            <li>User Responsible: <strong>{{input type="text" class="edit" value=proj.userName focus-out="acceptChanges" insert-newline="acceptChanges"}}</strong></li>
+            <li>User Responsible:<br>
+              {{view "select" content=users optionValuePath="content" optionLabelPath="content.userName" value=username}}
+            </li>
           {{else}}
             <li {{action "editMilestone" proj on="doubleClick" }}><strong>Current Milestone:</strong><p>{{proj.milestone}}</p></li>
             <li {{action "editMilestone" proj on="doubleClick" }}>Date of Milestone: <strong>{{date proj.deadline}}</strong></li>
-            <li {{action "editMilestone" proj on="doubleClick" }}>User Responsible: <strong>{{proj.userName}}</strong></li>
+            <li {{action "editMilestone" proj on="doubleClick" }}>User Responsible: <strong>{{proj.userName.userName}}</strong></li>
           {{/if}}
           
           {{#if proj.isEditing}}

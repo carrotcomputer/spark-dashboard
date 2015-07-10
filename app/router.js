@@ -11,6 +11,8 @@ Router.map(function() {
   this.route('current-project');
   this.route('traffic-light');
   this.route('all-projects');
+  this.route('new-user');
+  this.route('all-users');
 });
 
 export default Router;
