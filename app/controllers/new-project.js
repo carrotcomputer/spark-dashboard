@@ -3,6 +3,20 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
   lStatus:["Red","Amber","Green"],
   isError:false,
+  project: {
+    title: "",
+    milestone: "",
+    deadline: "",
+    username: "",
+    lightStatus: ""
+  },
+  activeUsers: function(){
+    var users = this.get('model');
+    var filteredUsers = users.filterBy('isRemoved', false);
+    
+    return filteredUsers;
+    
+  }.property('model.@each.isRemoved'),
   actions: {
     createProject: function(){
       var title       = this.get("projectTitle");

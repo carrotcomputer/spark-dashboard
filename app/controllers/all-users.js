@@ -13,6 +13,10 @@ export default Ember.Controller.extend({
       }
       usr.set('isEditing', false);
       usr.save();
+    },
+    deleteUser: function(usr){
+      usr.set('isRemoved', true);
+      usr.save();
     }
   }
 });

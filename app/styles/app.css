@@ -255,6 +255,18 @@ hr{
 .userCard .edit:focus{
   outline:none;
 }
+.delete_userCard{
+  background-color:white;
+  border:none;
+  margin:0 10px 0 -10px;
+  color: #A3A3A3;
+  font-size:12px;
+  cursor:pointer;
+  font-weight:500;
+}
+.delete_userCard:hover{
+  opacity:0.8;
+}
 .userCard .btn_sub{
   float:right;
   background-color: rgb(240, 240, 240);
