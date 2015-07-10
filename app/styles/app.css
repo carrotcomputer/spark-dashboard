@@ -7,6 +7,9 @@ body{
   font-family: 'Oxygen', sans-serif;
   overflow-y:scroll;
 }
+h3{
+  font-weight:500;
+}
 #navigation{
   width:100%;
   background-color: rgb(61, 117, 157);
@@ -43,8 +46,7 @@ nav ul li a:hover{
 #content{
   width:80%;
   max-width:1600px;
-  margin:50px auto 0 auto;;
-  //background-color:white;
+  margin:20px auto 0 auto;
   padding:15px;
   overflow:auto;
 }
@@ -85,24 +87,30 @@ hr{
   margin:5px 0;
   width:400px;
 }
-.btn_sub{
+.btn_sub, .btn_edit{
   background-color: rgb(72, 165, 72);
   border:none;
   padding:10px;
   color:white;
-  border-radius:5px;
+  border-radius:3px;
   min-width:100px;
   cursor:pointer;
   text-decoration:none;
   font-size:12px;
 }
-.btn_sub:hover{
+.btn_edit{
+  margin-top:20px;
+  margin-left:0;
+  padding:5px;
+  background-color: rgb(61, 117, 157);
+}
+.btn_sub:hover, .btn_edit:hover{
   opacity:0.8;
 }
 .traffic-outer{
-  border:1px solid #ccc;
-  border-radius:10px;
-  background: #4A4A4A;
+  /* border:1px solid #ccc; */
+  border-radius:5px;
+  /* background: #2C2C2C; */
   height:220px;
   width:100px;
   padding:10px;
@@ -116,28 +124,29 @@ hr{
   height:65px;
   width:65px;
   margin: 5px 0;
-  border-radius:100%;
-  background: rgb(238, 238, 238);
+  border-radius:20%;
+  background: rgb(108, 108, 108);
+  cursor:pointer;
 }
 .traffic-inner .status_1{
   height:65px;
   width:65px;
   margin: 5px 0;
-  border-radius:100%;
+  border-radius:20%;
   background: rgb(83, 200, 83);
 }
 .traffic-inner .status_2{
   height:65px;
   width:65px;
   margin: 5px 0;
-  border-radius:100%;
+  border-radius:20%;
   background: rgb(255, 171, 77);
 }
 .traffic-inner .status_3{
   height:65px;
   width:65px;
   margin: 5px 0;
-  border-radius:100%;
+  border-radius:20%;
   background: rgb(192, 80, 80);
 }
 .traffic-outer .info{
@@ -157,22 +166,40 @@ hr{
   width:30%;
 }
 .card{
+  position: relative;
   width:50%;
-  margin:0 auto;
   padding:15px;
   overflow:auto;
-  margin-top:20px;
+  margin:20px auto;
   background-color:white;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.20);
 }
+.card input{
+  border:1px solid #ccc;
+  width:100%;
+  font-weight:bold;
+  padding: 0;
+  padding:5px;
+  font-size:15.5px;
+  height:20px;
+  margin:5px 0 5px 0;
+  font-weight:500;
+}
+.card input:focus{
+  outline:none;
+}
 .card .left{
   float:left;
-  width:50%;
+  width:30%;
+}
+.card p {
+  font-weight:500;
+  font-size:16px;
 }
 .card .right{
   float:left;
   padding:10px;
-  color:#444;
+  color: #2F2F2F;
 }
 .card .right ul li{
   list-style:none;
@@ -181,4 +208,21 @@ hr{
   color:#444;
   font-weight:200;
   margin:50px 0;
+}
+.delete_card{
+  background-color:white;
+  border:none;
+  top:5px;
+  right:15px;
+  color: #A3A3A3;
+  font-size:15px;
+  position: absolute;
+  cursor:pointer;
+  font-weight:500;
+}
+.delete_card:focus{
+  outline:0;
+}
+.delete_card:hover{
+  opacity:0.5;
 }
