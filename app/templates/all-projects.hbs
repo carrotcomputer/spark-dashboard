@@ -51,7 +51,7 @@
           {{/if}}
           
           {{#if proj.isEditing}}
-            <li><button {{action "acceptChanges" proj}} class="btn_edit">Save</button></li>
+            <li><button {{action "acceptChanges" proj}} class="btn_edit">Update</button></li>
           {{else}}
             <li><button {{action "editMilestone" proj}} class="btn_edit">Edit</button></li>
           {{/if}}
@@ -63,9 +63,10 @@
       {{#link-to "new-project" class="btn_sub"}}+ New Project{{/link-to}}
   {{/each}}
   <br><br>
+  <!--
   <small>
     <p><span style="color:red;">Red</span> - There is no control over the project</p>
     <p><span style="color:orange;">Amber</span> - The project can have control but has not been taken yet</p>
     <p><span style="color:green;">Green</span> - The project is under control and no further action is required.</p>
-  </small>
+  </small>-->
 </div>
