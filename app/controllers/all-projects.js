@@ -1,6 +1,14 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+  users: "",
+  activeUsers: function(){
+    var users = this.get('users');
+    var filteredUsers = users.filterBy('isRemoved', false);
+    
+    return filteredUsers;
+    
+  }.property('users.@each.isRemoved'),
   actions: {
     deleteCard: function(proj){
       if(confirm("Are you sure you want to remove " +  proj.get('title') + "?")){
@@ -33,14 +41,15 @@ export default Ember.Controller.extend({
       proj.save();
     },
     editMilestone:function(proj){
+      this.set('users', this.store.find('user'));
       proj.set('isEditing', true);
     },
     acceptChanges: function(proj) {
-      if(!(Ember.isEmpty(proj.get('milestone')))){
+      if(proj.get('milestone') !== ""){
         proj.setProperties({
           milestone: proj.get('milestone'),
           deadline: new Date(proj.get('deadline')),
-          userName: proj.get('userName')
+          userName: this.get('username')
         });
       }
       proj.set('isEditing', false);
