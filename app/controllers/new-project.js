@@ -3,6 +3,20 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
   lStatus:["Red","Amber","Green"],
   isError:false,
+  project: {
+    title: "",
+    milestone: "",
+    deadline: "",
+    username: "",
+    lightStatus: ""
+  },
+  activeUsers: function(){
+    var users = this.get('model');
+    var filteredUsers = users.filterBy('isRemoved', false);
+    
+    return filteredUsers;
+    
+  }.property('model.@each.isRemoved'),
   actions: {
     createProject: function(){
       var title       = this.get("projectTitle");
@@ -29,8 +43,6 @@ export default Ember.Controller.extend({
           isAmber = false;
           isRed   = false;
         }
-        
-        
         var project = this.store.createRecord('project', {
           title: title,
           milestone: milestone,
@@ -49,8 +61,10 @@ export default Ember.Controller.extend({
         this.set('projectMilestone', '');
         this.set('deadline', '');
         this.set('username', '');
-      
+        
+        this.set('isError',false);
         this.transitionTo('all-projects');
+        
       }else{
         this.set('isError', true);
       }

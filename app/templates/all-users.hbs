@@ -1,0 +1,19 @@
+<div id="content">
+  <h1>All Users</h1>
+  <br>
+  {{#link-to "new-user" class="btn_sub"}}+ Add User{{/link-to}}
+  <br>
+  <br>
+  <hr/>
+  <ul>
+    {{#each usr in model}}
+      {{#unless usr.isRemoved}}
+        {{#if usr.isEditing}}
+          <li class="userCard">{{input type="text" class="edit" value=usr.userName focus-out="acceptChanges" insert-newline="acceptChanges"}} <button {{action "acceptChanges" usr}} class="btn_sub">Save</button></li>
+        {{else}}
+          <li class="userCard" {{action "editUser" usr on="doubleClick" }}><button {{action "deleteUser" usr }} class="delete_userCard">x</button>{{usr.userName}}<button {{action "editUser" usr }} class="btn_sub">Edit</button></li>
+        {{/if}}
+      {{/unless}}
+    {{/each}}
+  </ul>
+</div>
