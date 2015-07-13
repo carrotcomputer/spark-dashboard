@@ -2,6 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
   users: "",
+  isEditMode: false,
   activeUsers: function(){
     var users = this.get('users');
     var filteredUsers = users.filterBy('isRemoved', false);
@@ -10,6 +11,23 @@ export default Ember.Controller.extend({
     
   }.property('users.@each.isRemoved'),
   actions: {
+    editMode: function() {
+      this.set('isEditMode', true);
+      this.set('projects', this.get('model'));
+      
+    },
+    exitEditMode: function() {
+      this.set('isEditMode', false);
+    },
+    reOrder: function(newOrder) {
+      for(var i = 0; i < newOrder.length; i++){
+        var item = this.get('model').filterBy('title', newOrder[i].title);
+        item.setProperties({
+          position: newOrder[i].position,
+        });
+        item.save();
+      }
+    },
     deleteCard: function(proj){
       if(confirm("Are you sure you want to remove " +  proj.get('title') + "?")){
         proj.deleteRecord();
@@ -43,6 +61,9 @@ export default Ember.Controller.extend({
     editMilestone:function(proj){
       this.set('users', this.store.find('user'));
       proj.set('isEditing', true);
+    },
+    back:function(proj){
+      proj.set('isEditing', false);
     },
     acceptChanges: function(proj) {
       if(proj.get('milestone') !== ""){

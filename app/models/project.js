@@ -12,7 +12,8 @@ var Project = DS.Model.extend({
   isRed: DS.attr('boolean'),
   isAmber: DS.attr('boolean'),
   isGreen: DS.attr('boolean'),
-  isEditing: DS.attr('boolean', {defaultValue: false})
+  isEditing: DS.attr('boolean', {defaultValue: false}),
+  position: DS.attr('number', {defaultValue: 0})
 });
 
 export default Project;
