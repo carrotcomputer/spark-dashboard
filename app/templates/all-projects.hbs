@@ -14,7 +14,7 @@
     {{#if isEditMode}}
       {{#sortable-group tagName="ul" onChange="reOrder" as |group|}}
         {{#each model as |proj|}}
-          {{#sortable-item tagName="li" model=model group=group handle=".handle"}}
+          {{#sortable-item tagName="li" model=proj group=group handle=".handle"}}
             <span class="handle">
               <div class="back">
                 <h1>&varr; {{proj.title}} 

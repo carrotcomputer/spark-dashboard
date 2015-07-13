@@ -13,20 +13,17 @@ export default Ember.Controller.extend({
   actions: {
     editMode: function() {
       this.set('isEditMode', true);
-      this.set('projects', this.get('model'));
-      
     },
     exitEditMode: function() {
       this.set('isEditMode', false);
     },
-    reOrder: function(newOrder) {
-      for(var i = 0; i < newOrder.length; i++){
-        var item = this.get('model').filterBy('title', newOrder[i].title);
-        item.setProperties({
-          position: newOrder[i].position,
-        });
-        item.save();
+    reOrder: function(groupModel) {
+      for(var i=0;i<groupModel.length;i++){
+        groupModel[i].set('position', i);
+        groupModel[i].save();
       }
+      
+      this.set('model', groupModel);
     },
     deleteCard: function(proj){
       if(confirm("Are you sure you want to remove " +  proj.get('title') + "?")){
