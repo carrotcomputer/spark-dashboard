@@ -4,8 +4,10 @@
     {{#link-to "all-projects" class="btn_edit"}}Live Projects{{/link-to}}
     <br><br>
     <hr/>
+    <ul class="row-fluid grid">
      {{#each proj in model}}
        {{#unless proj.isLive}}
+       <li>
         <div class="card">
           <button class="delete_card" {{action "deleteCard" proj}}>x</button>
           <div class="left">
@@ -52,6 +54,8 @@
             </ul>
           </div>
         </div>
+      </li>
       {{/unless}}
     {{/each}}
+    </ul>
 </div>

@@ -10,9 +10,10 @@
   <div class="back-addUser">
     <label class="form-label">First Name*</label>
     <br>
-    {{input type="text" autofocus="autofocus"  placeholder="" name="name" class="inputText" value=name}}
+    {{input type="text" autofocus="autofocus"  placeholder="first name" name="name" class="inputText" value=name}}
     <br>
     <br>
+    <a href="javascript:history.back()" class="btn_sub">Back</a>
     <button class="btn_sub" {{action "addUser"}}>Add</button>
   </div>
 </div>
