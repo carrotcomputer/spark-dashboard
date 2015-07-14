@@ -6,7 +6,7 @@ export default DS.Model.extend({
   user: DS.belongsTo('user', {async: true}),
   selectedDeadline: function(){
     var target = moment(this.get('deadline'));
-    return target.format('DD-MM-YYYY');
+    return target.format('DD/MM/YYYY');
   }.property('deadline'),
   project: DS.belongsTo('project', {async: true})
 });

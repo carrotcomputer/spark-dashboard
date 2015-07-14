@@ -1,10 +1,8 @@
 <div id="content">
     <h1>Live Projects</h1>
-    {{#link-to "new-project" class="btn_edit"}}Add Project{{/link-to}}
-    {{#link-to "new-user" class="btn_edit"}}Add User{{/link-to}}
     {{#if isEditMode}}
       <p class="warning">
-         You can now re-arrange your project cards by using your pointer and dragging
+         <strong>EDIT</strong>: You can now re-arrange your project cards by using your pointer and dragging
       </p>
       <button class="btn_edit" {{action "exitEditMode"}}>Done</button>
     {{else}}
@@ -35,8 +33,10 @@
         {{/each}}
       {{/sortable-group}}
     {{else}}
+    <ul class="row-fluid grid">
      {{#each proj in model}}
        {{#if proj.isLive}}
+       <li>
         <div class="card">
           <button class="delete_card" {{action "deleteCard" proj}}>x</button>
           <div class="left">
@@ -75,7 +75,8 @@
               {{else}}
                 <li {{action "editMilestone" proj on="doubleClick" }}>
                   <strong>Current Milestone:</strong>
-                  <p>{{proj.milestones.lastObject.details}}</p>
+                  <hr/>
+                  <p class="milestone">{{proj.milestones.lastObject.details}}</p>
                 </li>
                 <li {{action "editMilestone" proj on="doubleClick" }}>
                   Date of Milestone: 
@@ -89,16 +90,19 @@
       
               {{#if proj.isEditing}}
                 <<li><button {{action "back" proj}} class="btn_edit">Back</button> <button {{action "acceptChanges" proj}} class="btn_edit">Update Current</button> <button {{action "newMilestone" proj}} class="btn_edit">Create New</button></li>
+                <p class="warning"><strong>EDIT</strong>: To create a new milestone for your project, simply click 'Edit', fill in the text fields and click 'Create New'. Your old milestone will be saved.</p>
               {{else}}
-                <li><button {{action "editMilestone" proj}} class="btn_edit">Edit Milestone</button> <button {{action "archive" proj}} class="btn_edit">Archive</button></li>
+                <li><button {{action "editMilestone" proj}} class="btn_edit">Edit</button> <button {{action "archive" proj}} class="btn_edit">Archive</button></li>
               {{/if}}
             </ul>
           </div>
         </div>
+      </li>
         {{/if}}
         {{else}}
           <h3 class="no_proj">No Live Projects</h3>
           {{#link-to "new-project" class="btn_sub"}}+ New Project{{/link-to}}
     {{/each}}
+  </ul>
   {{/if}}
 </div>
