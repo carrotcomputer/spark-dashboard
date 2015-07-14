@@ -1,7 +1,30 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+  users: "",
+  isEditMode: false,
+  activeUsers: function(){
+    var users = this.get('users');
+    var filteredUsers = users.filterBy('isRemoved', false);
+    
+    return filteredUsers;
+    
+  }.property('users.@each.isRemoved'),
   actions: {
+    editMode: function() {
+      this.set('isEditMode', true);
+    },
+    exitEditMode: function() {
+      this.set('isEditMode', false);
+    },
+    reOrder: function(groupModel) {
+      for(var i=0;i<groupModel.length;i++){
+        groupModel[i].set('position', i);
+        groupModel[i].save();
+      }
+      
+      this.set('model', groupModel);
+    },
     deleteCard: function(proj){
       if(confirm("Are you sure you want to remove " +  proj.get('title') + "?")){
         proj.deleteRecord();
@@ -33,14 +56,18 @@ export default Ember.Controller.extend({
       proj.save();
     },
     editMilestone:function(proj){
+      this.set('users', this.store.find('user'));
       proj.set('isEditing', true);
     },
+    back:function(proj){
+      proj.set('isEditing', false);
+    },
     acceptChanges: function(proj) {
-      if(!(Ember.isEmpty(proj.get('milestone')))){
+      if(proj.get('milestone') !== ""){
         proj.setProperties({
           milestone: proj.get('milestone'),
           deadline: new Date(proj.get('deadline')),
-          userName: proj.get('userName')
+          userName: this.get('username')
         });
       }
       proj.set('isEditing', false);

@@ -12,8 +12,11 @@ h3{
 }
 #navigation{
   width:100%;
-  background-color: rgb(61, 117, 157);
-  height:50px;
+  position:fixed;
+  top:0;
+  z-index:9999;
+  background-color: #3F51B5;
+  height:60px;
 }
 nav{
   width:80%;
@@ -24,19 +27,22 @@ nav ul{
 }
 nav ul li{
   display:inline;
-  line-height:50px;
-  margin:0 10px;
+  line-height:60px;
 }
 nav ul li a{
-  color:white;
+  color: rgb(255, 255, 255);
   text-decoration:none;
+  background: rgba(26, 35, 126, 0);
   font-weight:200;
-  font-size:13px;
+  font-size: 12px;
+  padding:10px;
+  border-radius:2px;
 }
 nav ul li a:hover{
-  opacity:0.8;
+  background-color:white;
+  color:rgb(61, 117, 157);
 }
-.left{
+nav .left{
   float:left;
   margin:7px 10px 0 0;
 }
@@ -46,7 +52,7 @@ nav ul li a:hover{
 #content{
   width:80%;
   max-width:1600px;
-  margin:20px auto 0 auto;
+  margin:70px auto 0 auto;
   padding:15px;
   overflow:auto;
 }
@@ -54,7 +60,7 @@ h1{
   font-size:25px;
   color:#444;
   font-weight:200;
-  margin:20px 0 10px 0; 
+  //margin:20px 0 10px 0; 
 }
 .form-label{
   color:#444;
@@ -64,7 +70,7 @@ p{
   margin:10px 0;
 }
 .error{
-  width:100%;
+  max-width:100%;
   top:-10px;
   padding:10px;
   text-align:center;
@@ -74,35 +80,61 @@ p{
   background-color: rgb(228, 78, 78);
   color: white;
 }
+.warning{
+  position:fixed;
+  bottom:0;
+  left:0;
+  padding:10px;
+  text-align:center;
+  font-size:13px;
+  background-color: rgba(255, 165, 0, 1);
+  color: white;
+  z-index:999;
+  border-radius:3px;
+}
 hr{
   opacity:0.2;
   margin:10px 0; 
 }
-.inputText{
+.inputText {
   min-height:10px;
   padding:10px;
   color:#555;
   border:1px solid #ccc;
-  border-radius:5px;
   margin:5px 0;
-  width:400px;
+  width:94%;
+}
+select{
+  background-color:white;
+  border-radius:0;
+  //width:420px;
+  min-height:10px;
+  padding:10px;
+  color:#555;
+  border:1px solid #ccc;
+  margin:5px 0;
+  padding:10px;
 }
 .btn_sub, .btn_edit{
-  background-color: rgb(72, 165, 72);
+  background-color: #3D5AFE;
   border:none;
   padding:10px;
   color:white;
-  border-radius:3px;
+  /* border-radius:3px; */
   min-width:100px;
   cursor:pointer;
   text-decoration:none;
   font-size:12px;
 }
 .btn_edit{
+  border-radius:2px;
   margin-top:20px;
   margin-left:0;
-  padding:5px;
-  background-color: rgb(61, 117, 157);
+  padding:10px;
+  background-color:rgb(240, 240, 240);
+  border:1px solid #ccc;
+  font-weight:500;
+  color:rgb(87, 87, 87);
 }
 .btn_sub:hover, .btn_edit:hover{
   opacity:0.8;
@@ -121,30 +153,30 @@ hr{
   width:65px;
 }
 .traffic-inner .status_0{
-  height:65px;
-  width:65px;
+  height:70px;
+  width:70px;
   margin: 5px 0;
   border-radius:20%;
-  background: rgb(108, 108, 108);
+  background: rgb(240, 240, 240);
   cursor:pointer;
 }
 .traffic-inner .status_1{
-  height:65px;
-  width:65px;
+  height:70px;
+  width:70px;
   margin: 5px 0;
   border-radius:20%;
   background: rgb(83, 200, 83);
 }
 .traffic-inner .status_2{
-  height:65px;
-  width:65px;
+  height:70px;
+  width:70px;
   margin: 5px 0;
   border-radius:20%;
   background: rgb(255, 171, 77);
 }
 .traffic-inner .status_3{
-  height:65px;
-  width:65px;
+  height:70px;
+  width:70px;
   margin: 5px 0;
   border-radius:20%;
   background: rgb(192, 80, 80);
@@ -167,10 +199,12 @@ hr{
 }
 .card{
   position: relative;
-  width:50%;
+  width:43%;
+  float:left;
+  min-height:282px;
   padding:15px;
   overflow:auto;
-  margin:20px auto;
+  margin:20px;
   background-color:white;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.20);
 }
@@ -199,7 +233,7 @@ hr{
 .card .right{
   float:left;
   padding:10px;
-  color: #2F2F2F;
+  color: #565656;
 }
 .card .right ul li{
   list-style:none;
@@ -225,4 +259,77 @@ hr{
 }
 .delete_card:hover{
   opacity:0.5;
+}
+.userCard{
+  list-style:none;
+  background:white;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.20);
+  margin:20px auto;
+  max-width:50%;
+  height:40px;
+  line-height:40px;
+  padding:10px;
+  font-size:14px;
+  padding-left:20px;
+  color:#555;
+}
+.userCard .edit{
+  margin-left:-8px;
+  color:#555;
+  padding:10px;
+  border:1px solid #ccc;
+  font-size:14px;
+}
+.userCard .edit:focus{
+  outline:none;
+}
+.delete_userCard{
+  background-color:white;
+  border:none;
+  margin:0 10px 0 -10px;
+  color: #A3A3A3;
+  font-size:12px;
+  cursor:pointer;
+  font-weight:500;
+}
+.delete_userCard:hover{
+  opacity:0.8;
+}
+.userCard .btn_sub{
+  float:right;
+  background-color: rgb(240, 240, 240);
+  color: rgb(87, 87, 87);
+  padding:5px;
+  height:100%;
+}
+.back{
+  max-width:35%;
+  overflow:auto;
+  background-color:white;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.20);
+  padding:20px;
+  margin:10px;
+}
+.back-addUser{
+  max-width:35%;
+  overflow:auto;
+  background-color:white;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.20);
+  padding:20px;
+
+}
+.sortable-item {
+  transition: all .125s;
+}
+ul{
+  list-style:none;
+}
+.sortable-item.is-dragging {
+  transition-duration: 0s;
+  z-index: 10;
+  cursor:move;
+}
+.sortable-item.is-dropping {
+  z-index: 10;
+  cursor:move;
 }

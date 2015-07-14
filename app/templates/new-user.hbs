@@ -1,0 +1,18 @@
+<div id="content">
+  <h1>New User</h1>
+  <br>
+  {{#if isError}}
+    <p class="error">
+        Please ensure all the required fields contain the correct information
+    </p>
+  {{/if}}
+  <hr/>
+  <div class="back-addUser">
+    <label class="form-label">First Name*</label>
+    <br>
+    {{input type="text" placeholder="" name="name" class="inputText" value=name}}
+    <br>
+    <br>
+    <button class="btn_sub" {{action "addUser"}}>Add</button>
+  </div>
+</div>
