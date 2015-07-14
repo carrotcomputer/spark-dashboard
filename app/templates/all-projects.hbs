@@ -43,52 +43,54 @@
             <div class="traffic-outer">
               <div class="traffic-inner">
                 {{#if proj.isRed}}
-                  <div {{action 'setRed' proj}} class="status_3">
-                  </div>
+                  <div {{action 'setRed' proj}} class="status_3"></div>
                 {{else}}
-                  <div {{action 'setRed' proj}} class="status_0">
-                  </div>
+                  <div {{action 'setRed' proj}} class="status_0"></div>
                 {{/if}}
         
                 {{#if proj.isAmber}}
-                  <div {{action 'setAmber' proj}} class="status_2">
-                  </div>
+                  <div {{action 'setAmber' proj}} class="status_2"></div>
                 {{else}}
-                  <div {{action 'setAmber' proj}} class="status_0">
-                  </div>
+                  <div {{action 'setAmber' proj}} class="status_0"></div>
                 {{/if}}
         
                 {{#if proj.isGreen}}
-                  <div {{action 'setGreen' proj}} class="status_1">
-                  </div>
+                  <div {{action 'setGreen' proj}} class="status_1"></div>
                 {{else}}
-                  <div {{action 'setGreen' proj}} class="status_0">
-                  </div>
+                  <div {{action 'setGreen' proj}} class="status_0"></div>
                 {{/if}}
               </div>
             </div>
           </div>
           <div class="right">
             <h3>{{proj.title}}</h3>
-            <small>{{proj.position}}</small>
             <br>
             <ul>
               {{#if proj.isEditing}}
-                <li><strong>Edit Milestone:</strong>{{input type="text" class="edit" value=proj.milestone focus-out="acceptChanges" insert-newline="acceptChanges"}}</li>
-                <li>Date of Milestone: <strong>{{input type="date" class="edit" value=proj.deadline focus-out="acceptChanges" insert-newline="acceptChanges"}}</strong></li>
+                <li><strong>Edit Milestone:</strong>{{input type="text" class="edit" value=proj.milestones.lastObject.details focus-out="acceptChanges" insert-newline="acceptChanges"}}</li>
+                <li>Date of Milestone: <strong>{{input type="date" class="edit" value=proj.milestones.lastObject.deadline focus-out="acceptChanges" insert-newline="acceptChanges"}}</strong></li>
                 <li>User Responsible:<br>
                   {{view "select" content=activeUsers optionValuePath="content" optionLabelPath="content.userName" value=username}}
                 </li>
               {{else}}
-                <li {{action "editMilestone" proj on="doubleClick" }}><strong>Current Milestone:</strong><p>{{proj.milestone}}</p></li>
-                <li {{action "editMilestone" proj on="doubleClick" }}>Date of Milestone: <strong>{{date proj.deadline}}</strong></li>
-                <li {{action "editMilestone" proj on="doubleClick" }}>User Responsible: <strong>{{proj.userName.userName}}</strong></li>
+                <li {{action "editMilestone" proj on="doubleClick" }}>
+                  <strong>Current Milestone:</strong>
+                  <p>{{proj.milestones.lastObject.details}}</p>
+                </li>
+                <li {{action "editMilestone" proj on="doubleClick" }}>
+                  Date of Milestone: 
+                  <strong>{{proj.milestones.lastObject.selectedDeadline}}</strong>
+                </li>
+                <li {{action "editMilestone" proj on="doubleClick" }}>
+                  User Responsible: 
+                  <strong>{{proj.milestones.lastObject.user.userName}}</strong>
+                </li>
               {{/if}}
       
               {{#if proj.isEditing}}
-                <<li><button {{action "back" proj}} class="btn_edit">Back</button> <button {{action "acceptChanges" proj}} class="btn_edit">Update</button></li>
+                <<li><button {{action "back" proj}} class="btn_edit">Back</button> <button {{action "acceptChanges" proj}} class="btn_edit">Update Current</button> <button {{action "newMilestone" proj}} class="btn_edit">Create New</button></li>
               {{else}}
-                <li><button {{action "editMilestone" proj}} class="btn_edit">Edit</button> <button {{action "archive" proj}} class="btn_edit">Archive</button></li>
+                <li><button {{action "editMilestone" proj}} class="btn_edit">Edit Milestone</button> <button {{action "archive" proj}} class="btn_edit">Archive</button></li>
               {{/if}}
             </ul>
           </div>

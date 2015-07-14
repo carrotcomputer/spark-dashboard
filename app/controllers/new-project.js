@@ -20,12 +20,12 @@ export default Ember.Controller.extend({
   actions: {
     createProject: function(){
       var title       = this.get("projectTitle");
-      var milestone   = this.get("projectMilestone");
+      var details   = this.get("projectMilestone");
       var deadline    = new Date(this.get('deadline'));
       var username    = this.get('username');
       var statusLight = this.get('lightStatus');
       
-      if(title && milestone && deadline && username && statusLight){
+      if(title && details && deadline && username && statusLight){
         var isRed   = false;
         var isAmber = false;
         var isGreen = false;
@@ -43,19 +43,28 @@ export default Ember.Controller.extend({
           isAmber = false;
           isRed   = false;
         }
+        
+        var controller = this;
         var project = this.store.createRecord('project', {
           title: title,
-          milestone: milestone,
-          deadline: deadline,
-          userName: username,
           isRed: isRed,
           isAmber: isAmber,
           isGreen: isGreen
         
         });
-      
+        
+        var newMilestone = controller.store.createRecord('milestone', {
+          details: details,
+          deadline: deadline,
+          user: username,
+          project: project
+        });
+        
+        newMilestone.save();
+                
+        project.set('milestone', newMilestone);
         project.save();
-            
+        
             
         this.set('projectTitle', '');
         this.set('projectMilestone', '');

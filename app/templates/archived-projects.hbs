@@ -12,40 +12,42 @@
             <div class="traffic-outer">
               <div class="traffic-inner">
                 {{#if proj.isRed}}
-                  <div {{action 'setRed' proj}} class="status_3">
-                  </div>
+                  <div {{action 'setRed' proj}} class="status_3"></div>
                 {{else}}
-                  <div {{action 'setRed' proj}} class="status_0">
-                  </div>
+                  <div {{action 'setRed' proj}} class="status_0"></div>
                 {{/if}}
-      
+        
                 {{#if proj.isAmber}}
-                  <div {{action 'setAmber' proj}} class="status_2">
-                  </div>
+                  <div {{action 'setAmber' proj}} class="status_2"></div>
                 {{else}}
-                  <div {{action 'setAmber' proj}} class="status_0">
-                  </div>
+                  <div {{action 'setAmber' proj}} class="status_0"></div>
                 {{/if}}
-      
+        
                 {{#if proj.isGreen}}
-                  <div {{action 'setGreen' proj}} class="status_1">
-                  </div>
+                  <div {{action 'setGreen' proj}} class="status_1"></div>
                 {{else}}
-                  <div {{action 'setGreen' proj}} class="status_0">
-                  </div>
+                  <div {{action 'setGreen' proj}} class="status_0"></div>
                 {{/if}}
               </div>
             </div>
           </div>
           <div class="right">
             <h3>{{proj.title}}</h3>
-            <small>{{proj.position}}</small>
             <br>
             <ul>
-                <li><strong>Current Milestone:</strong><p>{{proj.milestone}}</p></li>
-                <li>Date of Milestone: <strong>{{date proj.deadline}}</strong></li>
-                <li>User Responsible: <strong>{{proj.userName.userName}}</strong></li>
-                <li><button {{action "setLive" proj}} class="btn_edit">Set Live</button></li>
+                <li {{action "editMilestone" proj on="doubleClick" }}>
+                  <strong>Current Milestone:</strong>
+                  <p>{{proj.milestones.lastObject.details}}</p>
+                </li>
+                <li {{action "editMilestone" proj on="doubleClick" }}>
+                  Date of Milestone: 
+                  <strong>{{proj.milestones.lastObject.selectedDeadline}}</strong>
+                </li>
+                <li {{action "editMilestone" proj on="doubleClick" }}>
+                  User Responsible: 
+                  <strong>{{proj.milestones.lastObject.user.userName}}</strong>
+                </li>
+                <li><button {{action "setLive" proj}} class="btn_edit">Make Live</button></li>
             </ul>
           </div>
         </div>
