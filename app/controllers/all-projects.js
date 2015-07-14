@@ -3,6 +3,8 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
   users: "",
   isEditMode: false,
+  sortProperties: ['position'],
+  sortAcsending: true,
   activeUsers: function(){
     var users = this.get('users');
     var filteredUsers = users.filterBy('isRemoved', false);
@@ -26,10 +28,20 @@ export default Ember.Controller.extend({
       this.set('model', groupModel);
     },
     deleteCard: function(proj){
+      var controller = this;
+      
       if(confirm("Are you sure you want to remove " +  proj.get('title') + "?")){
         proj.deleteRecord();
-        proj.save();
+        proj.save().then(function(){
+          /*this.store.find('project').then(function(data){
+            controller.set('model', data);
+          });*/
+        });
       }
+    },
+    archive: function(proj){
+      proj.set('isLive', false);
+      proj.save();
     },
     setRed: function(proj) {
       proj.setProperties({

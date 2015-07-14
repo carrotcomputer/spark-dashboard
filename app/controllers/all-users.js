@@ -15,8 +15,10 @@ export default Ember.Controller.extend({
       usr.save();
     },
     deleteUser: function(usr){
-      usr.set('isRemoved', true);
-      usr.save();
+      if(confirm("Are you sure you want to delete the user " +  usr.get('userName') + "?")){
+        usr.set('isRemoved', true);
+        usr.save();
+      }
     }
   }
 });

@@ -13,6 +13,7 @@ Router.map(function() {
   this.route('all-projects');
   this.route('new-user');
   this.route('all-users');
+  this.route('archived-projects');
 });
 
 export default Router;

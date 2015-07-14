@@ -8,7 +8,7 @@
       </p>
       <button class="btn_edit" {{action "exitEditMode"}}>Done</button>
     {{else}}
-      <button class="btn_edit" {{action "editMode"}}>Change Order</button>
+      <button class="btn_edit" {{action "editMode"}}>Change Order of All Projects</button>
     {{/if}}
     <hr/>
     {{#if isEditMode}}
@@ -27,9 +27,7 @@
                 {{else if proj.isGreen}}
                   <div style="float:right;display:inline-block;background-color:rgb(83, 200, 83);height:20px;width:20px;border-radius:5px;">
                   </div>
-                {{else}}
                 {{/if}}
-                
                 </h1>
               </div>
             </span>
@@ -38,6 +36,7 @@
       {{/sortable-group}}
     {{else}}
      {{#each proj in model}}
+       {{#if proj.isLive}}
         <div class="card">
           <button class="delete_card" {{action "deleteCard" proj}}>x</button>
           <div class="left">
@@ -89,11 +88,12 @@
               {{#if proj.isEditing}}
                 <<li><button {{action "back" proj}} class="btn_edit">Back</button> <button {{action "acceptChanges" proj}} class="btn_edit">Update</button></li>
               {{else}}
-                <li><button {{action "editMilestone" proj}} class="btn_edit">Edit</button></li>
+                <li><button {{action "editMilestone" proj}} class="btn_edit">Edit</button> <button {{action "archive" proj}} class="btn_edit">Archive</button></li>
               {{/if}}
             </ul>
           </div>
         </div>
+        {{/if}}
         {{else}}
           <h3 class="no_proj">No Live Projects</h3>
           {{#link-to "new-project" class="btn_sub"}}+ New Project{{/link-to}}

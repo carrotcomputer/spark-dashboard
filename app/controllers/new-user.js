@@ -7,7 +7,6 @@ export default Ember.Controller.extend({
       var uName = this.get('name');
       
       if(uName){
-        if(uName.trim)
           this.set('isError',false);
           var user = this.store.createRecord('user', {
               userName: uName
