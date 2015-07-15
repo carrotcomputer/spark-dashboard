@@ -2,6 +2,15 @@
 
 module.exports = function(environment) {
   var ENV = {
+    contentSecurityPolicy: {
+      'default-src': "'none'",
+      'script-src': "'self' 'unsafe-inline' 'unsafe-eval'",
+      'font-src': "'self'",
+      'connect-src': "'self'",
+      'img-src': "'self' 'sparkrevolutions.com' ",
+      'style-src': "'self' 'unsafe-inline'",
+      'frame-src': ""
+    },
     modulePrefix: 'spark-dashboard',
     environment: environment,
     baseURL: '/',
@@ -18,7 +27,6 @@ module.exports = function(environment) {
       // when it is created
     }
   };
-
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;

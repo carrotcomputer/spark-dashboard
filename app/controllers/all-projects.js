@@ -1,3 +1,4 @@
+/* global moment:true */
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
@@ -28,8 +29,6 @@ export default Ember.Controller.extend({
       this.set('model', groupModel);
     },
     deleteCard: function(proj){
-      var controller = this;
-      
       if(confirm("Are you sure you want to remove " +  proj.get('title') + "?")){
         proj.deleteRecord();
         proj.save().then(function(){
