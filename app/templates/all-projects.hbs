@@ -1,14 +1,12 @@
 <div id="content">
     <h1>Live Projects</h1>
-    {{#link-to "new-project" class="btn_edit"}}Add Project{{/link-to}}
-    {{#link-to "new-user" class="btn_edit"}}Add User{{/link-to}}
     {{#if isEditMode}}
       <p class="warning">
-         You can now re-arrange your project cards by using your pointer and dragging
+         <strong>EDIT</strong>: You can now re-arrange your project cards by using your pointer and dragging
       </p>
       <button class="btn_edit" {{action "exitEditMode"}}>Done</button>
     {{else}}
-      <button class="btn_edit" {{action "editMode"}}>Change Order</button>
+      <button class="btn_edit" {{action "editMode"}}>Change Order of All Projects</button>
     {{/if}}
     <hr/>
     {{#if isEditMode}}
@@ -27,9 +25,7 @@
                 {{else if proj.isGreen}}
                   <div style="float:right;display:inline-block;background-color:rgb(83, 200, 83);height:20px;width:20px;border-radius:5px;">
                   </div>
-                {{else}}
                 {{/if}}
-                
                 </h1>
               </div>
             </span>
@@ -37,66 +33,76 @@
         {{/each}}
       {{/sortable-group}}
     {{else}}
+    <ul class="row-fluid grid">
      {{#each proj in model}}
+       {{#if proj.isLive}}
+       <li>
         <div class="card">
           <button class="delete_card" {{action "deleteCard" proj}}>x</button>
           <div class="left">
             <div class="traffic-outer">
               <div class="traffic-inner">
                 {{#if proj.isRed}}
-                  <div {{action 'setRed' proj}} class="status_3">
-                  </div>
+                  <div {{action 'setRed' proj}} class="status_3"></div>
                 {{else}}
-                  <div {{action 'setRed' proj}} class="status_0">
-                  </div>
+                  <div {{action 'setRed' proj}} class="status_0"></div>
                 {{/if}}
         
                 {{#if proj.isAmber}}
-                  <div {{action 'setAmber' proj}} class="status_2">
-                  </div>
+                  <div {{action 'setAmber' proj}} class="status_2"></div>
                 {{else}}
-                  <div {{action 'setAmber' proj}} class="status_0">
-                  </div>
+                  <div {{action 'setAmber' proj}} class="status_0"></div>
                 {{/if}}
         
                 {{#if proj.isGreen}}
-                  <div {{action 'setGreen' proj}} class="status_1">
-                  </div>
+                  <div {{action 'setGreen' proj}} class="status_1"></div>
                 {{else}}
-                  <div {{action 'setGreen' proj}} class="status_0">
-                  </div>
+                  <div {{action 'setGreen' proj}} class="status_0"></div>
                 {{/if}}
               </div>
             </div>
           </div>
           <div class="right">
             <h3>{{proj.title}}</h3>
-            <small>{{proj.position}}</small>
             <br>
             <ul>
               {{#if proj.isEditing}}
-                <li><strong>Edit Milestone:</strong>{{input type="text" class="edit" value=proj.milestone focus-out="acceptChanges" insert-newline="acceptChanges"}}</li>
-                <li>Date of Milestone: <strong>{{input type="date" class="edit" value=proj.deadline focus-out="acceptChanges" insert-newline="acceptChanges"}}</strong></li>
+                <li><strong>Edit Milestone:</strong>{{input type="text" class="edit" value=proj.milestones.lastObject.details focus-out="acceptChanges" insert-newline="acceptChanges"}}</li>
+                <li>Date of Milestone: <strong>{{input type="date" class="edit" value=proj.milestones.lastObject.deadline focus-out="acceptChanges" insert-newline="acceptChanges"}}</strong></li>
                 <li>User Responsible:<br>
                   {{view "select" content=activeUsers optionValuePath="content" optionLabelPath="content.userName" value=username}}
                 </li>
               {{else}}
-                <li {{action "editMilestone" proj on="doubleClick" }}><strong>Current Milestone:</strong><p>{{proj.milestone}}</p></li>
-                <li {{action "editMilestone" proj on="doubleClick" }}>Date of Milestone: <strong>{{date proj.deadline}}</strong></li>
-                <li {{action "editMilestone" proj on="doubleClick" }}>User Responsible: <strong>{{proj.userName.userName}}</strong></li>
+                <li {{action "editMilestone" proj on="doubleClick" }}>
+                  <strong>Current Milestone:</strong>
+                  <hr/>
+                  <p class="milestone">{{proj.milestones.lastObject.details}}</p>
+                </li>
+                <li {{action "editMilestone" proj on="doubleClick" }}>
+                  Date of Milestone: 
+                  <strong>{{proj.milestones.lastObject.selectedDeadline}}</strong>
+                </li>
+                <li {{action "editMilestone" proj on="doubleClick" }}>
+                  User Responsible: 
+                  <strong>{{proj.milestones.lastObject.user.userName}}</strong>
+                </li>
               {{/if}}
       
               {{#if proj.isEditing}}
-                <<li><button {{action "back" proj}} class="btn_edit">Back</button> <button {{action "acceptChanges" proj}} class="btn_edit">Update</button></li>
+                <<li><button {{action "back" proj}} class="btn_edit">Back</button> <button {{action "acceptChanges" proj}} class="btn_edit">Update Current</button> <button {{action "newMilestone" proj}} class="btn_edit">Create New</button></li>
+                <p class="warning"><strong>EDIT</strong>: To create a new milestone for your project, simply click 'Edit', fill in the text fields and click 'Create New'. Your old milestone will be saved.</p>
               {{else}}
-                <li><button {{action "editMilestone" proj}} class="btn_edit">Edit</button></li>
+                <li><button {{action "editMilestone" proj}} class="btn_edit">Edit</button> <button {{action "archive" proj}} class="btn_edit">Archive</button></li>
               {{/if}}
             </ul>
           </div>
         </div>
+      </li>
+        {{/if}}
         {{else}}
           <h3 class="no_proj">No Live Projects</h3>
           {{#link-to "new-project" class="btn_sub"}}+ New Project{{/link-to}}
     {{/each}}
+  </ul>
   {{/if}}
 </div>
