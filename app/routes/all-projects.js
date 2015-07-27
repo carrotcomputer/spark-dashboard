@@ -19,9 +19,9 @@ export default Ember.Route.extend({
     this.store.find('revenue').then(function(data) {
       if(data.content.length == 0){
     		var newRevenue = controller.store.createRecord('revenue', {
-    			currentTarget: '0',
-    			invoiced: '0',
-    			remaining: '0'
+    			currentTarget: '',
+    			invoiced: '',
+    			remaining: ''
     		});
         newRevenue.save().then(function(data){
           controller.set('revenue', data.get('firstObject'))
@@ -29,10 +29,13 @@ export default Ember.Route.extend({
       } else {
           controller.set('revenue', data.get('firstObject'))
       }
+      controller.checkEditMode();
   	},
     function(){
       alert('It looks like there is no internet connection. Please check later.')
     }
   );
   }
+  
+  
 });

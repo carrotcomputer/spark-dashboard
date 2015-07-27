@@ -14,6 +14,17 @@ export default Ember.Controller.extend({
 	getRevenue: function() {
 		this.set('revenue', this.store.find('revenue'));	
 	},
+  
+  checkEditMode: function(data) {
+    if(this.get('revenue.currentTarget').length > 0 && this.get('revenue.remaining').length > 0 && this.get('revenue.invoiced').length > 0)
+    {
+     this.set('revenueEditMode', false)
+    }
+    else {
+      this.set('revenueEditMode', true)
+    }
+  },
+  
   activeUsers: function(){
     var users = this.get('users');
     var filteredUsers = users.filterBy('isRemoved', false);
