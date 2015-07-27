@@ -499,6 +499,14 @@ ul.grid > li:nth-of-type(2n+1) {
   color: #444;
 }
 
+.revenue-information {
+  width: 40%;
+}
+#sbm-btn {
+  float: right;
+  height: 100px;
+}
+
 .targetbox, .invoicedbox, .remainingbox {
   padding: 10px;
   border: solid 1px #fff;

@@ -2,6 +2,9 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+  currentTarget: "",
+  remaining: "",
+  invoiced: "",
   revenue: "",
   users: "",
   isEditMode: false,
@@ -33,6 +36,7 @@ export default Ember.Controller.extend({
       
       this.set('model', groupModel);
 	},
+
     deleteCard: function(proj){
       if(confirm("Are you sure you want to remove " +  proj.get('title') + "?")){
         proj.deleteRecord();
@@ -48,16 +52,13 @@ export default Ember.Controller.extend({
 	},
 	
 	addRevenue: function() {
-		var newRevenue = this.store.createRecord('revenue', {
-			target: this.get('target'),
-			invoiced: this.get('invoiced'),
-			remaining: this.get('remaining')
-		});
+
     
+    var newRevenue = this.get('revenue')    
     var controller = this;
     
 		newRevenue.save().then(function(){
-		  
+      controller.set('revenueEditMode', false);
 		});
 	},
     archive: function(proj){

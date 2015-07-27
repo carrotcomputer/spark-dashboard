@@ -3,22 +3,25 @@
      <h1> Revenue - [Month Here]</h1> 
      <hr /> 
        {{#if revenueEditMode}}
-				<form action="newRevenueDetails">
         <ul>
-					<li>Current Target</li> {{input type="text" class="targetbox" name="target"}}<br>
-					<li>Invoiced Amount</li> {{input type="text" class="invoicedbox" name="invoiced"}}<br>
-					<li>Remaining Amount</li> {{input type="text" class="remainingbox" name="remaining"}}<br>
+					<li>Current Target</li> {{input type="text" class="targetbox" value=revenue.currentTarget}}<br>
+					<li>Invoiced Amount</li> {{input type="text" class="invoicedbox" value=revenue.invoiced}}<br>
+					<li>Remaining Amount</li> {{input type="text" class="remainingbox" value=revenue.remaining}}<br>
         </ul>
 				<input type="submit" value="Submit" {{action 'addRevenue'}}>
-			</form>{{else}}	{{/if}}
+        {{else}}	
       <br>
-        <div class="revenue-information"> {{#each rev in revenue}}
+        <div class="revenue-information"> 
           <ul>
-            <li>Current Target: </li> {{rev.target}}
-            <li>Invoiced Amount: </li> {{rev.invoiced}}
-            <li>Remaining Amount: </li> {{rev.remaining}}
-          </ul> {{/each}}
+            <li>Current Target: {{revenue.currentTarget}} </li> 
+            <li>Invoiced Amount: {{revenue.invoiced}} </li> 
+            <li>Remaining Amount: {{revenue.remaining}} </li> 
+          </ul> 
+          <input type="submit" value="Edit" {{action 'editRevenue'}} id="sbm-btn">
+          <br>
+          <br>
   </div>
+  {{/if}}
     <h1>Live Projects</h1>
     {{#if isEditMode}}
       <p class="warning">
