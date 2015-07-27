@@ -2,10 +2,15 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+  revenue: "",
   users: "",
   isEditMode: false,
   sortProperties: ['position'],
   sortAcsending: true,
+  revenueEditMode: true,	
+	getRevenue: function() {
+		this.set('revenue', this.store.find('revenue'));	
+	},
   activeUsers: function(){
     var users = this.get('users');
     var filteredUsers = users.filterBy('isRemoved', false);
@@ -27,7 +32,7 @@ export default Ember.Controller.extend({
       }
       
       this.set('model', groupModel);
-    },
+	},
     deleteCard: function(proj){
       if(confirm("Are you sure you want to remove " +  proj.get('title') + "?")){
         proj.deleteRecord();
@@ -38,6 +43,23 @@ export default Ember.Controller.extend({
         });
       }
     },
+	editRevenue: function() {
+		this.set('revenueEditMode', true);
+	},
+	
+	addRevenue: function() {
+		var newRevenue = this.store.createRecord('revenue', {
+			target: this.get('target'),
+			invoiced: this.get('invoiced'),
+			remaining: this.get('remaining')
+		});
+    
+    var controller = this;
+    
+		newRevenue.save().then(function(){
+		  
+		});
+	},
     archive: function(proj){
       proj.set('isLive', false);
       proj.save();

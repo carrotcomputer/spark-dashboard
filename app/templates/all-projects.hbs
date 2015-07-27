@@ -1,4 +1,24 @@
 <div id="content">
+	 <div class="revenue">
+     <h1> Revenue - [Month Here]</h1> 
+     <hr /> 
+       {{#if revenueEditMode}}
+				<form action="newRevenueDetails">
+        <ul>
+					<li>Current Target</li> {{input type="text" class="targetbox" name="target"}}<br>
+					<li>Invoiced Amount</li> {{input type="text" class="invoicedbox" name="invoiced"}}<br>
+					<li>Remaining Amount</li> {{input type="text" class="remainingbox" name="remaining"}}<br>
+        </ul>
+				<input type="submit" value="Submit" {{action 'addRevenue'}}>
+			</form>{{else}}	{{/if}}
+      <br>
+        <div class="revenue-information"> {{#each rev in revenue}}
+          <ul>
+            <li>Current Target: </li> {{rev.target}}
+            <li>Invoiced Amount: </li> {{rev.invoiced}}
+            <li>Remaining Amount: </li> {{rev.remaining}}
+          </ul> {{/each}}
+  </div>
     <h1>Live Projects</h1>
     {{#if isEditMode}}
       <p class="warning">
@@ -105,4 +125,5 @@
     {{/each}}
   </ul>
   {{/if}}
+</div>
 </div>
