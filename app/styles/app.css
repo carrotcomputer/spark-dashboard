@@ -519,6 +519,16 @@ ul.grid > li:nth-of-type(2n+1) {
   font-size: 15px;
 }
 
+.invoiced {
+  margin-bottom: 50px;
+  color: #565656;
+}
+
+.invoiced input {
+	list-style-type: none;
+  color: #565656;
+  width: 40%;
+}
 
 
 }

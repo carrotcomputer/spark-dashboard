@@ -1,13 +1,12 @@
 <div id="content">
-     <h1> Revenue - [Month Here]</h1> 
+     <h1> Revenue - {{revenue.getMonth}}</h1> 
      <hr /> 
      <div class="revenue">
        {{#if revenueEditMode}}
        <div class="revenue-input">
         <ul>
 					<li>Current Target</li> {{input type="text" class="inputText" value=revenue.currentTarget}}<br>
-					<li>Invoiced Amount</li> {{input type="text" class="inputText" value=revenue.invoiced}}<br>
-					<li>Remaining Amount</li> {{input type="text" class="inputText" value=revenue.remaining}}<br>
+					<li>Amount Invoiced</li> {{input type="text" class="inputText" value=revenue.invoiced}}<br>
         </ul>
 				<input type="submit" value="Submit" class="btn_sub" {{action 'addRevenue'}}>
       </div>
@@ -15,12 +14,23 @@
         <div class="revenue-output"> 
           <ul>
             <li>Current Target: {{revenue.currentTarget}} </li> 
-            <li>Invoiced Amount: {{revenue.invoiced}} </li> 
-            <li>Remaining Amount: {{revenue.remaining}} </li> 
+            <li>Amount Invoiced: {{revenue.invoiced}} </li> 
+            <li>Amount Remaining: {{revenue.remaining}} </li> 
           </ul> 
           <input type="submit" value="Edit" {{action 'editRevenue'}} class="btn_sub">
       </div>
   {{/if}}
+</div>
+
+<div class="invoiced">
+  <h1>Invoiced</h1>
+  <div class="invoiced-input">
+    <hr />
+    <ul>
+      <li>Client Name: </li> {{input type="text" class="inputText" value=invoiced.invoicedClient}}<br>
+      <li>Invoiced Amount: </li> {{input type="text" class="inputText" value=invoiced.invoicedClient}}
+    </ul>
+  </div>
 </div>
     <h1>Live Projects</h1>
     {{#if isEditMode}}
