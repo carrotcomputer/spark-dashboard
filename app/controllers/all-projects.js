@@ -2,10 +2,32 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+  currentTarget: "",
+  remaining: "",
+  invoiced: "",
+  revenue: "",
   users: "",
   isEditMode: false,
   sortProperties: ['position'],
   sortAcsending: true,
+  revenueEditMode: true,	
+	getRevenue: function() {
+		this.set('revenue', this.store.find('revenue'));	
+	},
+  
+  checkEditMode: function(data) {
+    
+    var newRevenue = this.get('revenue') 
+    
+    if(newRevenue.get('currentTarget') > 0 && newRevenue.get('invoiced') > 0)
+    {
+     this.set('revenueEditMode', false)
+    }
+    else {
+      this.set('revenueEditMode', true)
+    }
+  },
+  
   activeUsers: function(){
     var users = this.get('users');
     var filteredUsers = users.filterBy('isRemoved', false);
@@ -27,17 +49,32 @@ export default Ember.Controller.extend({
       }
       
       this.set('model', groupModel);
-    },
+	},
+
     deleteCard: function(proj){
       if(confirm("Are you sure you want to remove " +  proj.get('title') + "?")){
         proj.deleteRecord();
         proj.save().then(function(){
-          /*this.store.find('project').then(function(data){
-            controller.set('model', data);
-          });*/
         });
       }
     },
+	editRevenue: function() {
+		this.set('revenueEditMode', true);
+	},
+  
+	addRevenue: function() {
+    var newRevenue = this.get('revenue')    
+    var controller = this;
+    
+    newRevenue.set('remaining', newRevenue.get('currentTarget') - newRevenue.get('invoiced'));
+    
+    newRevenue.set('dateCreated', new Date());
+  
+		newRevenue.save().then(function(){
+      controller.set('revenueEditMode', false);
+		});
+  
+	},
     archive: function(proj){
       proj.set('isLive', false);
       proj.save();

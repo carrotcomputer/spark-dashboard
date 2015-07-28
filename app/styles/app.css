@@ -489,3 +489,41 @@ ul.grid > li:nth-of-type(2n+1) {
     clear:none;
   }
 }
+
+.revenue-input{
+	list-style-type: none;
+  color: #565656;
+  width: 40%;
+  margin-bottom: 50px;
+}
+
+.revenue-input h1 {
+  color: #444;
+}
+
+.revenue-output li{
+  color: #444;
+  margin-bottom: 5px;
+}
+
+.revenue-output {
+  margin-bottom: 50px;
+}
+
+.invoiced {
+  margin-bottom: 50px;
+  color: #565656;
+}
+
+.invoiced-create .btn_sub{
+  top: 50px;
+}
+
+.invoiced-input {
+	list-style-type: none;
+  color: #565656;
+  width: 40%;
+}
+
+
+}

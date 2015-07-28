@@ -1,0 +1,12 @@
+<div id="content">
+  <div class="back">
+    <div class="left">
+      <label class="form-label">Add new client invoice</label>
+      <br>
+      {{input autofocus="autofocus" type="text" placeholder="Client Name" name="clientName" class="inputText" value=invoiced}}
+      <br>
+      {{input autofocus="autofocus" type="text" placeholder="Invoice Amount in £" name="invoiceAmount" class="inputText" value=invoiced.invoicedNameAmount}}
+      <button class="btn_sub" {{action "createInvoice"}}>Create</button>
+    </div>
+  </div>
+</div>
