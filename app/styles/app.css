@@ -510,21 +510,16 @@ ul.grid > li:nth-of-type(2n+1) {
   margin-bottom: 50px;
 }
 
-.targetbox, .invoicedbox, .remainingbox {
-  padding: 10px;
-  border: solid 1px #fff;
-  box-shadow: inset 1px 1px 2px 0 #707070;
-  display: block;
-  width: 30%;
-  font-size: 15px;
-}
-
 .invoiced {
   margin-bottom: 50px;
   color: #565656;
 }
 
-.invoiced input {
+.invoiced-create .btn_sub{
+  top: 50px;
+}
+
+.invoiced-input {
 	list-style-type: none;
   color: #565656;
   width: 40%;

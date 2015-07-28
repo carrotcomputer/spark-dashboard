@@ -13,9 +13,9 @@
         {{else}}	
         <div class="revenue-output"> 
           <ul>
-            <li>Current Target: {{revenue.currentTarget}} </li> 
-            <li>Amount Invoiced: {{revenue.invoiced}} </li> 
-            <li>Amount Remaining: {{revenue.remaining}} </li> 
+            <li>Current Target: £{{revenue.currentTarget}} </li> 
+            <li>Amount Invoiced: £{{revenue.invoiced}} </li> 
+            <li>Amount Remaining: £{{revenue.remaining}} </li> 
           </ul> 
           <input type="submit" value="Edit" {{action 'editRevenue'}} class="btn_sub">
       </div>
@@ -24,13 +24,16 @@
 
 <div class="invoiced">
   <h1>Invoiced</h1>
+  <hr />
   <div class="invoiced-input">
-    <hr />
     <ul>
-      <li>Client Name: </li> {{input type="text" class="inputText" value=invoiced.invoicedClient}}<br>
-      <li>Invoiced Amount: </li> {{input type="text" class="inputText" value=invoiced.invoicedClient}}
+      <li>Client Name: </li> 
+      <li>Amount Invoiced: </li> 
     </ul>
-  </div>
+    </div><br>
+    <div class="invoiced-create">
+      {{#link-to "new-invoice" class="btn_sub"}}+ New Invoice{{/link-to}}
+    </div>
 </div>
     <h1>Live Projects</h1>
     {{#if isEditMode}}
@@ -122,7 +125,7 @@
               {{/if}}
       
               {{#if proj.isEditing}}
-                <<li><button {{action "back" proj}} class="btn_edit">Back</button> <button {{action "acceptChanges" proj}} class="btn_edit">Update Current</button> <button {{action "newMilestone" proj}} class="btn_edit">Create New</button></li>
+                <li><button {{action "back" proj}} class="btn_edit">Back</button> <button {{action "acceptChanges" proj}} class="btn_edit">Update Current</button> <button {{action "newMilestone" proj}} class="btn_edit">Create New</button></li>
                 <p class="warning"><strong>EDIT</strong>: To create a new milestone for your project, simply click 'Edit', fill in the text fields and click 'Create New'. Your old milestone will be saved.</p>
               {{else}}
                 <li><button {{action "editMilestone" proj}} class="btn_edit">Edit</button> <button {{action "archive" proj}} class="btn_edit">Archive</button></li>
