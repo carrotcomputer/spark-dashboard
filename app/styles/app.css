@@ -490,21 +490,24 @@ ul.grid > li:nth-of-type(2n+1) {
   }
 }
 
-.revenue{
+.revenue-input{
 	list-style-type: none;
   color: #565656;
+  width: 40%;
+  margin-bottom: 50px;
 }
 
-.revenue h1 {
+.revenue-input h1 {
   color: #444;
 }
 
-.revenue-information {
-  width: 40%;
+.revenue-output li{
+  color: #444;
+  margin-bottom: 5px;
 }
-#sbm-btn {
-  float: right;
-  height: 100px;
+
+.revenue-output {
+  margin-bottom: 50px;
 }
 
 .targetbox, .invoicedbox, .remainingbox {
@@ -516,18 +519,6 @@ ul.grid > li:nth-of-type(2n+1) {
   font-size: 15px;
 }
 
-/*.revenue-card {
-	  position: relative;
-	  width: 45%;
-	  margin: 20px;
-	  height: 20%;
-	  padding:15px;
-	  overflow:auto;
-	  background-color:white;
-	  box-shadow: 0 0 4px rgba(0, 0, 0, 0.20);
-	  display: block;
-	  color: #565656;
-	}
-  */
-  
+
+
 }
