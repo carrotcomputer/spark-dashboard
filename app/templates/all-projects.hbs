@@ -2,13 +2,13 @@
      <h1> Revenue - {{revenue.getMonth}}</h1> 
      <hr /> 
      <div class="revenue">
-       {{#if revenueEditMode}}
+       {{#if revenue.isRevenueEditMode}}
        <div class="revenue-input">
         <ul>
 					<li>Current Target</li> {{input type="text" class="inputText" value=revenue.currentTarget}}<br>
 					<li>Amount Invoiced</li> {{input type="text" class="inputText" value=revenue.invoiced}}<br>
         </ul>
-				<input type="submit" value="Submit" class="btn_sub" {{action 'addRevenue'}}>
+				<input type="submit" value="Set" class="btn_sub" {{action 'addRevenue'}}>
       </div>
         {{else}}	
         <div class="revenue-output"> 

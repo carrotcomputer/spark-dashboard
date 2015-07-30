@@ -2,5 +2,6 @@
 import DS from 'ember-data';
 
 export default DS.Model.extend({
-  invoicedNameAmount: DS.attr('array')
+  invoiceName: DS.attr('string'),
+  invoiceAmount: DS.attr('string')
 });

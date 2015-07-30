@@ -3,9 +3,9 @@
     <div class="left">
       <label class="form-label">Add new client invoice</label>
       <br>
-      {{input autofocus="autofocus" type="text" placeholder="Client Name" name="clientName" class="inputText" value=invoiced}}
+      {{input type="text" placeholder="Client Name" class="inputText" value=invoiced.invoiceName}}
       <br>
-      {{input autofocus="autofocus" type="text" placeholder="Invoice Amount in £" name="invoiceAmount" class="inputText" value=invoiced.invoicedNameAmount}}
+      {{input type="text" placeholder="Invoice Amount in £" class="inputText" value=invoiced.invoiceAmount}}
       <button class="btn_sub" {{action "createInvoice"}}>Create</button>
     </div>
   </div>

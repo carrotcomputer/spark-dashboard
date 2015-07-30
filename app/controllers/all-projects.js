@@ -3,6 +3,7 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
   currentTarget: "",
+  currentRevenue: "",
   remaining: "",
   invoiced: "",
   revenue: "",
@@ -10,21 +11,18 @@ export default Ember.Controller.extend({
   isEditMode: false,
   sortProperties: ['position'],
   sortAcsending: true,
-  revenueEditMode: true,	
 	getRevenue: function() {
 		this.set('revenue', this.store.find('revenue'));	
 	},
   
   checkEditMode: function(data) {
-    
-    var newRevenue = this.get('revenue') 
-    
+    var newRevenue = this.store.find('revenue');
     if(newRevenue.get('currentTarget') > 0 && newRevenue.get('invoiced') > 0)
     {
-     this.set('revenueEditMode', false)
+      newRevenue.set('isRevenueEditMode', false);
     }
     else {
-      this.set('revenueEditMode', true)
+      newRevenue.set('isRevenueEditMode', true);
     }
   },
   
@@ -59,22 +57,24 @@ export default Ember.Controller.extend({
       }
     },
 	editRevenue: function() {
-		this.set('revenueEditMode', true);
-	},
-  
+    var currentRevenue = this.get('revenue');
+		currentRevenue.set('isRevenueEditMode', true);
+	}, 
 	addRevenue: function() {
-    var newRevenue = this.get('revenue')    
-    var controller = this;
-    
-    newRevenue.set('remaining', newRevenue.get('currentTarget') - newRevenue.get('invoiced'));
-    
-    newRevenue.set('dateCreated', new Date());
+    if (this.get('revenue.currentTarget') > 0 && this.get('revenue.invoiced') > 0)
+    {
+      var currentRevenue = this.get('revenue');
+      currentRevenue.set('dateCreated', new Date());
+      currentRevenue.set('isRevenueEditMode', false);
+      currentRevenue.save();
+  		}
+    else {
+      var currentRevenue = this.get('revenue');
+      currentRevenue.set('isRevenueEditMode', true);
+      alert('You must enter a correct Target / Invoice Amount!');    
+    }
+   },
   
-		newRevenue.save().then(function(){
-      controller.set('revenueEditMode', false);
-		});
-  
-	},
     archive: function(proj){
       proj.set('isLive', false);
       proj.save();
