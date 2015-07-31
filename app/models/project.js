@@ -1,8 +1,10 @@
 import DS from 'ember-data';
 
 var Project = DS.Model.extend({
+  rev: DS.attr('string'),
   title: DS.attr('string'),
-  milestones: DS.hasMany('milestone', {async: true}),
+  milestone: DS.hasMany('milestone', {async: true}),
+  
   isRed: DS.attr('boolean'),
   isAmber: DS.attr('boolean'),
   isGreen: DS.attr('boolean'),

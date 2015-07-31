@@ -67,8 +67,8 @@
             <br>
             <ul>
               {{#if proj.isEditing}}
-                <li><strong>Edit Milestone:</strong>{{input type="text" class="edit" value=proj.milestones.lastObject.details focus-out="acceptChanges" insert-newline="acceptChanges"}}</li>
-                <li>Date of Milestone: <strong>{{input type="date" class="edit" value=proj.milestones.lastObject.deadline focus-out="acceptChanges" insert-newline="acceptChanges"}}</strong></li>
+                <li><strong>Edit Milestone:</strong>{{input type="text" class="edit" value=proj.milestone.lastObject.details focus-out="acceptChanges" insert-newline="acceptChanges"}}</li>
+                <li>Date of Milestone: <strong>{{input type="date" class="edit" value=proj.milestone.lastObject.deadline focus-out="acceptChanges" insert-newline="acceptChanges"}}</strong></li>
                 <li>User Responsible:<br>
                   {{view "select" content=activeUsers optionValuePath="content" optionLabelPath="content.userName" value=username}}
                 </li>
@@ -76,15 +76,15 @@
                 <li {{action "editMilestone" proj on="doubleClick" }}>
                   <strong>Current Milestone:</strong>
                   <hr/>
-                  <p class="milestone">{{proj.milestones.lastObject.details}}</p>
+                  <p class="milestone">{{proj.milestone.lastObject.details}}</p>
                 </li>
                 <li {{action "editMilestone" proj on="doubleClick" }}>
                   Date of Milestone: 
-                  <strong>{{proj.milestones.lastObject.selectedDeadline}}</strong>
+                  <strong>{{proj.milestone.lastObject.selectedDeadline}}</strong>
                 </li>
                 <li {{action "editMilestone" proj on="doubleClick" }}>
                   User Responsible: 
-                  <strong>{{proj.milestones.lastObject.user.userName}}</strong>
+                  <strong>{{proj.milestone.lastObject.user.userName}}</strong>
                 </li>
               {{/if}}
       

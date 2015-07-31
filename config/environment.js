@@ -3,10 +3,10 @@
 module.exports = function(environment) {
   var ENV = {
     contentSecurityPolicy: {
-      'default-src': "'none'",
-      'script-src': "'self' 'unsafe-inline' 'unsafe-eval'",
+      'default-src': "'self' http://0.0.0.0:4200",
+      'connect-src': "'self' http://192.168.1.21:4200 http://192.168.1.21:35729 ws://192.168.1.21:35729 ws://192.168.1.21:35729  http://192.168.1.21:5984",
+      'script-src': "'self' 'unsafe-inline' 'unsafe-eval' http://192.168.1.21:35729 ",
       'font-src': "'self'",
-      'connect-src': "'self'",
       'img-src': "'self' 'sparkrevolutions.com' ",
       'style-src': "'self' 'unsafe-inline'",
       'frame-src': ""
