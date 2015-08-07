@@ -1,0 +1,11 @@
+<script src="../controllers/hot-leads.js" type="text/javascript" charset="utf-8"></script>
+<div id="content">
+  <div class="back">
+    <div class="left">
+      <label class="form-label">Add New Hot Lead</label>
+      <br>
+      {{input type="text" placeholder="Name of Company" class="inputText" value=hotlead.hotLeadName}}
+      <button class="btn_sub" {{action "createHotLead"}}>Create</button>
+    </div>
+  </div>
+</div>
