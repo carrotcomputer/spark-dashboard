@@ -1,40 +1,5 @@
+<script src="../controllers/all-projects.js" type="text/javascript" charset="utf-8"></script>
 <div id="content">
-     <h1> Revenue - {{revenue.getMonth}}</h1> 
-     <hr /> 
-     <div class="revenue">
-       {{#if revenue.isRevenueEditMode}}
-       <div class="revenue-input">
-        <ul>
-					<li>Current Target</li> {{input type="text" class="inputText" value=revenue.currentTarget}}<br>
-					<li>Amount Invoiced</li> {{input type="text" class="inputText" value=revenue.invoiced}}<br>
-        </ul>
-				<input type="submit" value="Set" class="btn_sub" {{action 'addRevenue'}}>
-      </div>
-        {{else}}	
-        <div class="revenue-output"> 
-          <ul>
-            <li>Current Target: £{{revenue.currentTarget}} </li> 
-            <li>Amount Invoiced: £{{revenue.invoiced}} </li> 
-            <li>Amount Remaining: £{{revenue.remaining}} </li> 
-          </ul> 
-          <input type="submit" value="Edit" {{action 'editRevenue'}} class="btn_sub">
-      </div>
-  {{/if}}
-</div>
-
-<div class="invoiced">
-  <h1>Invoiced</h1>
-  <hr />
-  <div class="invoiced-input">
-    <ul>
-      <li>Client Name: </li> 
-      <li>Amount Invoiced: </li> 
-    </ul>
-    </div><br>
-    <div class="invoiced-create">
-      {{#link-to "new-invoice" class="btn_sub"}}+ New Invoice{{/link-to}}
-    </div>
-</div>
     <h1>Live Projects</h1>
     {{#if isEditMode}}
       <p class="warning">
