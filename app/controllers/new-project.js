@@ -44,28 +44,27 @@ export default Ember.Controller.extend({
           isRed   = false;
         }
         
-        var controller = this;
+        var newMilestone = this.store.createRecord('milestone', {
+          details: details,
+          deadline: deadline,
+          user: username
+        });
+        
         var project = this.store.createRecord('project', {
           title: title,
           isRed: isRed,
           isAmber: isAmber,
-          isGreen: isGreen
-        
+          isGreen: isGreen,
         });
         
-        var newMilestone = controller.store.createRecord('milestone', {
-          details: details,
-          deadline: deadline,
-          user: username,
-          project: project
+        project.save().then(function(data){
+          newMilestone.set('project', data);
+          newMilestone.save();
         });
         
-        newMilestone.save();
-                
-        project.set('milestone', newMilestone);
-        project.save();
+        project.get('milestone').pushObject(newMilestone);
         
-            
+        
         this.set('projectTitle', '');
         this.set('projectMilestone', '');
         this.set('deadline', '');
