@@ -18,6 +18,7 @@ export default Ember.Controller.extend({
   
   inv:"",
   lead:"",
+  clienthold: "",
   revenue: "",
   users: "",
   isEditMode: false,
@@ -81,6 +82,14 @@ export default Ember.Controller.extend({
       alert('You must enter a correct Target / Invoice Amount!');    
     }
   },
+  
+  deleteClientHold: function(clienthold) {
+	  if(confirm("Are you sure you want to remove this?")){
+		  clienthold.deleteRecord();
+		  clienthold.save();
+	  }
+  },
+  
   deleteHotLead: function(lead) {
      if(confirm("Are you sure you want to remove Hot Lead " + lead.get('hotLeadName') + "?")){
        lead.deleteRecord();

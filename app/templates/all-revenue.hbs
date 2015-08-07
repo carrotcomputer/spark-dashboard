@@ -68,9 +68,14 @@
   <h1> On Hold </h1>
   <hr>
   <div class="on-hold-output">
-    <ul>
-      <li>Client Name: </li>
-      <li>Price(s): </li>
+    <ul>  
+		{{#each clientName in clienthold}}  
+		<button class="deleteClientHoldClass" {{action "deleteClientHold" clientName}}>X</button>
+	  <!--  <button class="editClientHoldClass" {{action "editClientHold" clientName}}>-</button> -->
+      <li>Client Name: {{clientName.onholdname}}  </li> 
+      <li>Price(s):  {{#each clientPrice in clientName.clientholdprice}} £{{clientPrice.price}},  {{/each}}</li>
+	  <hr><br>
+	  {{/each}}
     </ul>
   </div> <br>
   <div class="on-hold-input">

@@ -557,18 +557,18 @@ ul.grid > li:nth-of-type(2n+1) {
   width: 30%;
 } 
 
-.invoiced-output hr, .hot-leads-output hr, .invoiced-input hr{
+.invoiced-output hr, .hot-leads-output hr, .invoiced-input hr {
   width: 100%;
   border-color: #000000; 
 }
 
-.deleteInvoiceClass, .deleteHotLeadClass {
+.deleteInvoiceClass, .deleteHotLeadClass, .deleteClientHoldClass {
   background-color: red;
   width: 4%;
   float: right;
 }
 
-.editInvoiceClass, .editHotLeadClass {
+.editInvoiceClass, .editHotLeadClass, .editClientHoldClass {
   background-color: green;
   width: 4%;
   float: right;
@@ -583,6 +583,13 @@ ul.grid > li:nth-of-type(2n+1) {
   width:22%;
 }
 
+.left .btn_sub {
+	float: right;
+}
+
+#input-btn {
+	float: left;
+}
 
 
 }

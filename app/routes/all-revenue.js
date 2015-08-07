@@ -17,6 +17,11 @@ renderTemplate: function(){
 setupController: function(controller){
     var target = moment(new Date());
     var invoiced = this.get('invoiced');
+	var clienthold = this.get('clienthold');
+	var clientholdprice = this.get('clientholdprice');
+	
+	controller.set('clienthold', controller.store.find('clienthold'));
+	controller.set('clientholdprice', controller.store.find('clientholdprice'));
     
     controller.store.find('invoiced').then(function(data){
       var invoices = data;
@@ -41,8 +46,8 @@ setupController: function(controller){
   		  var newRevenue = controller.store.createRecord('revenue', {
   			  currentTarget: 0,
   			  invoiced: 0,
-          isRevenueEditMode: true,
-          dateCreated: 0
+          	  isRevenueEditMode: true,
+          	  dateCreated: 0
   		  });
       newRevenue.save().then(function(data){
       controller.set('revenue', data);
