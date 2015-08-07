@@ -6,7 +6,7 @@ export default DS.Model.extend({
 	currentTarget: DS.attr('number'),
 	invoiced: DS.attr('number'),
 	remaining: function(){
-	   return this.get('currentTarget') - this.get('invoiced')
+    return this.get('currentTarget') - this.get('invoiced');
 	}.property('currentTarget', 'invoiced'),
   dateCreated: DS.attr('string'),
   

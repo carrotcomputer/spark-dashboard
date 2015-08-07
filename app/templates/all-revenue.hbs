@@ -1,0 +1,104 @@
+<script src="../controllers/all-revenue.js" type="text/javascript" charset="utf-8"></script>
+<div id="content">
+  <div class="revenue">
+   <h1> Revenue for {{revenue.getMonth}}</h1> 
+   <hr />
+   {{#if revenue.isRevenueEditMode}}
+   <div class="revenue-input">
+    <ul>
+  		<li>Current Target</li> {{input type="text" class="inputText" value=revenue.currentTarget}}<br>
+  		<li>Amount Invoiced</li> {{input type="text" class="inputText" value=revenue.invoiced}}<br>
+    </ul>
+  	<input type="submit" value="Set" class="btn_sub" {{action 'addRevenue'}}>
+  </div>
+    {{else}}	
+    <div class="revenue-output">              
+      <ul>
+        <li>Current Target: £{{revenue.currentTarget}} </li> 
+        <li>Amount Invoiced: £{{revenue.invoiced}} </li> 
+        <li>Amount Remaining: £{{revenue.remaining}} </li> 
+      </ul> 
+      <input type="submit" value="Edit" {{action 'editRevenue'}} class="edit_btn_sub">
+    </div>
+  {{/if}}
+  </div>
+  
+<div class="invoiced">
+  <h1>Invoiced</h1>
+  {{invoiced.getInvoiceMonth}}
+  <hr />
+  <div class="invoiced-output">  
+      {{#each inv in invoiced}}
+      <ul>
+         {{#if inv.isEditInvoice}}
+         {{input type="text" class="inputText" value=inv.invoiceName}}
+         {{input type="text" class="inputText" value=inv.invoiceAmount}}
+         <button class="setEditInvoiceClass" {{action "setEditInvoice" inv}}>Set</button>
+         {{else}}
+         <button class="deleteInvoiceClass" {{action "deleteInvoice" inv}}>X</button>
+         <button class="editInvoiceClass" {{action "editInvoice" inv}}>-</button>
+         <li>Client Name: {{inv.invoiceName}} </li> 
+         <li>Amount Invoiced: £{{inv.invoiceAmount}} </li> 
+         {{/if}}
+         <hr><br>
+      </ul>
+      {{/each}}
+  </div>
+    <div class="invoiced-create">
+      {{#link-to "new-invoice" class="btn_sub"}}+ Create Invoice{{/link-to}}
+    </div>
+  </div>
+
+<div class="leads-to-close">
+  <h1> Leads To Close </h1>
+  <hr>
+  <div class="leads-to-close-input">
+    {{#link-to "leadstoclose" class="btn_sub"}}+ Create Lead To Close{{/link-to}}
+  </div> <br>
+  <div class="leads-to-close-output">
+    <ul>
+      <li>Name of Company: </li>
+      <li>Leads:</li>
+    </ul>
+  </div>
+</div>
+<br>
+
+<div class="on-hold">
+  <h1> On Hold </h1>
+  <hr>
+  <div class="on-hold-output">
+    <ul>
+      <li>Client Name: </li>
+      <li>Price(s): </li>
+    </ul>
+  </div> <br>
+  <div class="on-hold-input">
+    {{#link-to "on-hold" class="btn_sub"}}+Create On-Hold {{/link-to}}
+  </div>
+</div>
+<br>
+
+<div class="hot-leads">
+  <h1> Hot Leads </h1>
+    <hr />
+    <div class="hot-leads-output">
+      {{#each lead in hotlead}}
+      <ul>
+        {{#if lead.isEditHotLead}}
+          {{input type="text" class="inputText" value=lead.hotLeadName}}
+          <button class="setEditHotLeadClass" {{action "setHotLead" lead}}>Set</button>
+          {{else}}
+          <button class="deleteHotLeadClass" {{action "deleteHotLead" lead}}>X</button>
+          <button class="editHotLeadClass" {{action "editHotLead" lead}}>-</button>
+          <li>Company Name: {{lead.hotLeadName}}</li>
+        {{/if}}
+      </ul>
+        <hr><br>
+        {{/each}}
+    </div>
+    <div class="hot-leads-input">
+      {{#link-to "hot-lead" class="btn_sub"}}+ Create Hot Lead {{/link-to}}
+    </div>
+  </div>
+</div>
