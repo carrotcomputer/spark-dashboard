@@ -54,6 +54,19 @@ nav .left{
 .right{
   float:right;
 }
+
+.rightDate {
+  margin-left: 2%;
+  margin-top: 0.75%;
+  position: absolute;
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  background: rgba(26, 35, 126, 0);
+  font-weight: 200;
+  font-size: 12px;
+  padding: 10px;
+  border-radius: 2px;
+}
 #content{
   width:80%;
   margin:70px auto 0 auto;
@@ -121,7 +134,7 @@ select{
   margin:5px 0;
   padding:10px;
 }
-.btn_sub, .btn_edit, .btn_help{
+.btn_sub, .btn_edit, .btn_help, .setEditInvoiceClass, .edit_btn_sub, .setEditHotLeadClass{
   background-color: #3D5AFE;
   border:none;
   padding:10px;
@@ -488,4 +501,95 @@ ul.grid > li:nth-of-type(2n+1) {
   ul.grid > li:nth-of-type(2n+1) {
     clear:none;
   }
+}
+
+.revenue-input{
+	list-style-type: none;
+  color: #565656;
+  width: 40%;
+  margin-bottom: 50px;
+}
+
+.revenue-input h1 {
+  color: #444;
+}
+
+.revenue-output li{
+  color: #444;
+  margin-bottom: 5px;
+}
+
+.revenue-output {
+  margin-bottom: 50px;
+}
+
+.revenue-output .card {
+  width: 40%;
+  min-height: 100px;
+}
+
+.revenue-input .card {
+  min-height: 100px;
+}
+
+.revenue-output .btn_sub, .revenue-input .btn_sub {
+  width: 20%;
+}
+
+.invoiced {
+  margin-bottom: 50px;
+  color: #565656;
+}
+
+.invoiced-create .btn_sub{
+  top: 50px;
+}
+
+.invoiced-input {
+	list-style-type: none;
+  color: #565656;
+  width: 40%;
+}
+
+.invoiced-output, .hot-leads-output, .leads-to-close-output, .on-hold-output {
+  color: #565656;
+	list-style-type: none;
+  width: 30%;
+} 
+
+.invoiced-output hr, .hot-leads-output hr, .invoiced-input hr {
+  width: 100%;
+  border-color: #000000; 
+}
+
+.deleteInvoiceClass, .deleteHotLeadClass, .deleteClientHoldClass {
+  background-color: red;
+  width: 4%;
+  float: right;
+}
+
+.editInvoiceClass, .editHotLeadClass, .editClientHoldClass {
+  background-color: green;
+  width: 4%;
+  float: right;
+  
+}
+.smallbox {
+  min-height:10px;
+  padding:10px;
+  color:#555;
+  border:1px solid #ccc;
+  margin:5px 0;
+  width:22%;
+}
+
+.left .btn_sub {
+	float: right;
+}
+
+#input-btn {
+	float: left;
+}
+
+
 }

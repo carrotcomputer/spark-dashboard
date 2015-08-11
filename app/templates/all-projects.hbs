@@ -1,3 +1,4 @@
+<script src="../controllers/all-projects.js" type="text/javascript" charset="utf-8"></script>
 <div id="content">
     <h1>Live Projects</h1>
     {{#if isEditMode}}
@@ -89,7 +90,7 @@
               {{/if}}
       
               {{#if proj.isEditing}}
-                <<li><button {{action "back" proj}} class="btn_edit">Back</button> <button {{action "acceptChanges" proj}} class="btn_edit">Update Current</button> <button {{action "newMilestone" proj}} class="btn_edit">Create New</button></li>
+                <li><button {{action "back" proj}} class="btn_edit">Back</button> <button {{action "acceptChanges" proj}} class="btn_edit">Update Current</button> <button {{action "newMilestone" proj}} class="btn_edit">Create New</button></li>
                 <p class="warning"><strong>EDIT</strong>: To create a new milestone for your project, simply click 'Edit', fill in the text fields and click 'Create New'. Your old milestone will be saved.</p>
               {{else}}
                 <li><button {{action "editMilestone" proj}} class="btn_edit">Edit</button> <button {{action "archive" proj}} class="btn_edit">Archive</button></li>

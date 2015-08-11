@@ -11,7 +11,8 @@ var Project = DS.Model.extend({
   
   isEditing: DS.attr('boolean', {defaultValue: false}),
   position: DS.attr('number', {defaultValue: 0}),
-  isLive: DS.attr('boolean', {defaultValue: true})
+  isLive: DS.attr('boolean', {defaultValue: true}),
+  
 });
 
 export default Project;

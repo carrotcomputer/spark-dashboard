@@ -1,0 +1,22 @@
+<script src="../controllers/on-hold.js" type="text/javascript" charset="utf-8"></script>
+<div id="content">
+  <div class="back">
+    <div class="left">
+      <label class="form-label">Add On-Hold</label>	  
+	  {{#if checkStatus.readOnlyStatus}}
+    	  {{input type="text" readonly="readonly" placeholder="Client Name" class="inputText" value=clienthold.onholdname}}
+	  {{else}}
+	   	<button class="btn_sub" {{action "createClientOnHold"}}>Create</button>
+	 	 {{input type="text" placeholder="Client Name" class="inputText" value=clienthold.onholdname}}
+	  {{/if}}
+	  
+      <br>
+      {{#if clienthold.buttonStatus}}
+      {{input type="text" placeholder="Price in £" class="inputText" value=currentPrice}}
+	  <button class="btn_sub" id="input-btn" {{action "createInput"}}>+ Amount</button>
+      <br>
+	  <button class="btn_sub" id="done-btn" {{action "onHoldDone"}}>Done</button>
+      {{/if}}
+    </div>
+  </div>
+</div>

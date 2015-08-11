@@ -1,0 +1,13 @@
+<script src="../controllers/new-invoice.js" type="text/javascript" charset="utf-8"></script>
+<div id="content">
+  <div class="back">
+    <div class="left">
+      <label class="form-label">Add new client invoice</label>
+      <br>
+      {{input type="text" placeholder="Client Name" class="inputText" value=invoiced.invoiceName}}
+      <br>
+      {{input type="text" placeholder="Invoice Amount in £" class="inputText" value=invoiced.invoiceAmount}}
+      <button class="btn_sub" {{action "createInvoice"}}>Create</button>
+    </div>
+  </div>
+</div>
