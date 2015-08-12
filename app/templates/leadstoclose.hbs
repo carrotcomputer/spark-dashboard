@@ -1,0 +1,24 @@
+<script src="../controllers/leadstoclose.js" type="text/javascript" charset="utf-8"></script>
+<div id="content">
+  <div class="back">
+    <div class="left">
+      <label class="form-label">Add Lead to Close</label>
+	  <br>
+	  {{#if leadsCurrentStatus.leadsReadOnly}}
+	 	 {{input type="text" readonly="readonly" placeholder="Company Name" class="inputText" value=leadstoclose.leadName}}
+      {{else}}
+	  	{{input type="text" placeholder="Company Name" class="inputText" value=leadstoclose.leadName}}
+		<button class="btn_sub" id="create-btn" {{action "createLeadToClose"}}>Create</button>
+      {{/if}}
+	  
+	  <br>
+	  {{#if leadstoclose.inputStatus}}
+	  {{input text="text" placeholder="Price in £" class="inputText" value=currentLeadPrice}}
+	  <button class="btn_sub" id ="input-btn" {{action "createLeadInput"}}>+ Amount</button>
+	  <br>
+	  <button class="btn_sub" id="done-btn" {{action "leadInputDone"}}>Done</button>
+	  {{/if}}
+    </div>
+  </div>
+</div>
+

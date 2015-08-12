@@ -5,7 +5,7 @@ export default Ember.Controller.extend({
     currentTarget: "",
     currentRevenue: "",
     dateCreated: "",
-    remaining: "",
+    remaining: "",  
     },
   invoiced: {
     getInvoiceMonth: function(){
@@ -45,7 +45,6 @@ export default Ember.Controller.extend({
     },
   editInvoice: function(inv) {
     inv.set('isEditInvoice', true);
-  
   },
   setEditInvoice: function(inv) {
     if(inv.get('invoiceName') === "") {
@@ -74,7 +73,7 @@ export default Ember.Controller.extend({
       currentRevenue.set('dateCreated', new Date());
       currentRevenue.set('isRevenueEditMode', false);
       currentRevenue.save();
-  		}
+  	}
     else {
       currentRevenue.set('dateCreated', new Date());
       currentRevenue.set('isRevenueEditMode', true);
@@ -82,19 +81,42 @@ export default Ember.Controller.extend({
       alert('You must enter a correct Target / Invoice Amount!');    
     }
   },
-  
   deleteClientHold: function(clienthold) {
 	  if(confirm("Are you sure you want to remove this?")){
+      var clientHoldDelete = clienthold.get('clientholdprice');
+      clientHoldDelete.forEach(function(clientPrice){
+        Ember.run.once(function() {
+    		  clientPrice.deleteRecord();
+          clientPrice.save();
+        });
+      });
 		  clienthold.deleteRecord();
 		  clienthold.save();
 	  }
   },
-  
+  editClientHold: function(clientInfo) {
+	  this.set('clienthold.isEditClientHold', false);
+  },
   deleteHotLead: function(lead) {
      if(confirm("Are you sure you want to remove Hot Lead " + lead.get('hotLeadName') + "?")){
        lead.deleteRecord();
        lead.save();
      }
+  },
+  deleteLeadClose: function(client) {
+	  if(confirm("Are you sure you want to remove a Lead To Close?")) {
+      var leadsToClosePrices = client.get('leadstocloseprice');
+      
+      leadsToClosePrices.forEach(function(price){
+        Ember.run.once(function() {
+    		  price.deleteRecord();
+          price.save();
+        });
+      });
+      
+		  client.deleteRecord();
+      client.save();
+	  }
   },
   editHotLead: function(lead) {
       lead.set('isEditHotLead', true);
