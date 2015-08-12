@@ -11,6 +11,7 @@ export default Ember.Controller.extend({
 	viewNumberInput: false  
   },
 
+isEditClientHold: false,
   actions: {
     createClientOnHold: function() {
 		
@@ -55,7 +56,7 @@ export default Ember.Controller.extend({
 		});
 	  }
     },
-	
+
 	onHoldDone: function() {
 		if (this.get('checkStatus.viewNumberInput') === false) {
 			alert('You have not entered any amounts!');

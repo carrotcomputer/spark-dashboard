@@ -5,6 +5,8 @@ export default DS.Model.extend({
   clientholdprice: DS.hasMany('clientholdprice'),
 	checkStatus: {
 	readOnlyStatus: DS.attr('boolean', {defaultValue: false})
-	}
+	},
+	
+	isEditClientHold: DS.attr('boolean', {defaultValue: false})
   });
 

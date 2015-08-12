@@ -52,14 +52,18 @@
 <div class="leads-to-close">
   <h1> Leads To Close </h1>
   <hr>
-  <div class="leads-to-close-input">
-    {{#link-to "leadstoclose" class="btn_sub"}}+ Create Lead To Close{{/link-to}}
-  </div> <br>
   <div class="leads-to-close-output">
     <ul>
-      <li>Name of Company: </li>
-      <li>Leads:</li>
+		{{#each client in leadstoclose}}
+		<button class="deleteLeadCloseClass" {{action "deleteLeadClose" client}}>X</button>
+      <li>Name of Company: {{client.leadName}} </li> 
+      <li>Leads: {{#each price in client.leadstocloseprice}} £{{price.leadsPrice}}, {{/each}} </li> 
+	  <hr><br>
+	  {{/each}}
     </ul>
+  </div> <br>
+  <div class="leadsClose-input">
+	  {{#link-to "leadstoclose" class="btn_sub"}}+Create Lead To Close {{/link-to}}
   </div>
 </div>
 <br>
@@ -71,12 +75,12 @@
     <ul>  
 		{{#each clientName in clienthold}}  
 		<button class="deleteClientHoldClass" {{action "deleteClientHold" clientName}}>X</button>
-	  <!--  <button class="editClientHoldClass" {{action "editClientHold" clientName}}>-</button> -->
+		<button class="editClientHoldClass" {{action "editClientHold" clientInfo}}>-</button>
       <li>Client Name: {{clientName.onholdname}}  </li> 
       <li>Price(s):  {{#each clientPrice in clientName.clientholdprice}} £{{clientPrice.price}},  {{/each}}</li>
 	  <hr><br>
 	  {{/each}}
-    </ul>
+    </ul>	
   </div> <br>
   <div class="on-hold-input">
     {{#link-to "on-hold" class="btn_sub"}}+Create On-Hold {{/link-to}}
