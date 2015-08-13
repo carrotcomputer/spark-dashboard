@@ -72,15 +72,30 @@
   <h1> On Hold </h1>
   <hr>
   <div class="on-hold-output">
-    <ul>  
 		{{#each clientName in clienthold}}  
+    {{#if clientName.isEditClientHold}}
+  <ul>
+    <li>{{input type="text" class="inputText" value=clientName.onholdname}}</li>     
+    <button class="editClientHoldDoneClass" {{action "editClientHoldDone" clientName}} >Set New Name</button>
+    <li>
+     {{#each clientPrice in clientName.clientholdprice}}
+        {{input type="text" class="inputText" value=clientPrice.price}}
+        <button class="editClientHoldDoneClass" {{action "editClientHoldDone" clientPrice}} >Set Price</button>
+     {{/each}}
+    </li>      
+  </ul>
+  <center>
+    <button class="editClientHoldFinishedClass" {{action "editClientHoldFinish" clientName}}>Done</button>
+  </center>
+   {{else}}
 		<button class="deleteClientHoldClass" {{action "deleteClientHold" clientName}}>X</button>
-		<button class="editClientHoldClass" {{action "editClientHold" clientInfo}}>-</button>
+		<button class="editClientHoldClass" {{action "editClientHold" clientName}}>-</button>
+    <ul>
       <li>Client Name: {{clientName.onholdname}}  </li> 
       <li>Price(s):  {{#each clientPrice in clientName.clientholdprice}} £{{clientPrice.price}},  {{/each}}</li>
+    </ul>	{{/if}}
 	  <hr><br>
 	  {{/each}}
-    </ul>	
   </div> <br>
   <div class="on-hold-input">
     {{#link-to "on-hold" class="btn_sub"}}+Create On-Hold {{/link-to}}

@@ -11,7 +11,6 @@ renderTemplate: function(){
     outlet: 'nav',
     controller: 'nav'
   });
-
   this.render();
 },
 setupController: function(controller){
@@ -22,15 +21,12 @@ setupController: function(controller){
 	  var leadstoclose = this.get('leadstoclose');
 	  var leadstocloseprice = this.get('leadstocloseprice');
 	
-	controller.set('clienthold', controller.store.find('clienthold'));
-	controller.set('clientholdprice', controller.store.find('clientholdprice'));
-	controller.set('leadstoclose', controller.store.find('leadstoclose'));
-	controller.set('leadstocloseprice', controller.store.find('leadstocloseprice'));
-	
- //    controller.store.find('config').then(function(data) {
- //   if(data.content.length === null || data.content.length === 0) {
+	  controller.set('clienthold', controller.store.find('clienthold'));
+    controller.set('clientholdprice', controller.store.find('clientholdprice'));
+    controller.set('leadstoclose', controller.store.find('leadstoclose'));
+    controller.set('leadstocloseprice', controller.store.find('leadstocloseprice'));
    
-   controller.store.find('config').then(function(data) {
+    controller.store.find('config').then(function(data) {
      if(data.content.length === 0 || data.content.length === null) {
       var configCreate = controller.store.createRecord('config', {
         isPageEdited: false,
@@ -41,16 +37,14 @@ setupController: function(controller){
       configCreate.save().then(function(data) {
         controller.set('config',data);
       });
-  }
-  else {
+    }
+    else {
     controller.set('config', data.get('firstObject'));
     controller.store.find('config').then(function(data){
       controller.set('config', data.get('firstObject'));
     });
-  }
-});
-/*}
-  }); */ 
+    }
+  });
     controller.store.find('invoiced').then(function(data){
       var invoices = data;
       var currentDate = new Date();
@@ -83,6 +77,7 @@ setupController: function(controller){
         controller.store.find('revenue').then(function(data){
           controller.set('revenue', data.get('firstObject'));
           controller.set('revenue.isRevenueEditMode', false);
+          controller.set('clienthold.isEditClientHold', false);
         });
       }
     },

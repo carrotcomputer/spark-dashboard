@@ -21,6 +21,7 @@ export default Ember.Controller.extend({
   clienthold: "",
   revenue: "",
   users: "",
+  isEditClientName: false,
   isEditMode: false,
   isRevenueEditMode: false,
 	getRevenue: function() {
@@ -95,7 +96,19 @@ export default Ember.Controller.extend({
 	  }
   },
   editClientHold: function(clientInfo) {
-	  this.set('clienthold.isEditClientHold', false);
+	  clientInfo.set('isEditClientHold', true);
+  },
+  editClientHoldDone: function(clienthold) {
+    if(clienthold.get('price') > 0 && clienthold.get('onholdname') !== "") {
+        clienthold.save();
+      }
+      else {
+        alert('You have inputted the field incorrectly!');
+      }
+  },
+  editClientHoldFinish: function(clientInfo) {
+    clientInfo.set('isEditClientHold', false);
+    this.transitionTo('all-projects');
   },
   deleteHotLead: function(lead) {
      if(confirm("Are you sure you want to remove Hot Lead " + lead.get('hotLeadName') + "?")){
@@ -106,14 +119,12 @@ export default Ember.Controller.extend({
   deleteLeadClose: function(client) {
 	  if(confirm("Are you sure you want to remove a Lead To Close?")) {
       var leadsToClosePrices = client.get('leadstocloseprice');
-      
       leadsToClosePrices.forEach(function(price){
         Ember.run.once(function() {
     		  price.deleteRecord();
           price.save();
         });
       });
-      
 		  client.deleteRecord();
       client.save();
 	  }

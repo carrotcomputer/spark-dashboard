@@ -31,32 +31,18 @@ export default Ember.Controller.extend({
 	     }	
     }, 	  
     createLeadInput: function() {
-		if (this.get('currentLeadPrice') > 1) {
+		if (this.get('currentLeadPrice') > 0) {
  		  this.set('leadsCurrentStatus.leadsReadOnly', true);
-	  this.set('leadsCurrentStatus.leadsNumberInput', true);
-	  var leadsClose = this.get('model');
-	  var newLeadPrice = this.store.createRecord('leadstocloseprice', {
+	    this.set('leadsCurrentStatus.leadsNumberInput', true);
+	    var leadsClose = this.get('model');
+	    var newLeadPrice = this.store.createRecord('leadstocloseprice', {
 		  leadsPrice: this.get('currentLeadPrice')
 	  }); 
-	 leadsClose.get('leadstocloseprice').pushObject(newLeadPrice);
-	  var controller = this;
-	  newLeadPrice.save().then(function(){
-		  controller.set('currentLeadPrice', '');
-		  
+	   leadsClose.get('leadstocloseprice').pushObject(newLeadPrice);
+	   var controller = this;
+	   newLeadPrice.save().then(function(){
+		   controller.set('currentLeadPrice', '');
       // Config for text colour.
-      var configCreate = controller.store.find('config');
-      if(configCreate.isPageEdited === true) {
-        alert('test');
-      }
-      else { 
-        var config = controller.get('controllers.application.model');
-//        config.set('isPageEdited', true);
-  //      config.save();
-      }
-		  //Check if config edit value is true, if it is - do nothing
-      //If it is false, get the config object in a variable - var config = controller.get('controllers.application.model')
-		  //set the edit value to true - config.set('isPageEdited', true)
-      //Save the config object config.save()
 	  });
 	}
 		else {
@@ -68,6 +54,19 @@ export default Ember.Controller.extend({
 			alert('You have not entered any amounts!');
 		}	
 		else {
+      var configcreate = this.store.find('config');
+      if(configcreate.get('isPageEdited') === true) {
+        alert('test');
+      }
+      else { 
+ //       var config = controller.get('controllers.application.model');
+//        config.set('isPageEdited', true);
+  //      config.save();
+      }
+		  //Check if config edit value is true, if it is - do nothing
+      //If it is false, get the config object in a variable - var config = controller.get('controllers.application.model')
+		  //set the edit value to true - config.set('isPageEdited', true)
+      //Save the config object config.save()
 			this.set('leadsCurrentStatus.leadsReadOnly', false);
 			this.transitionTo('all-revenue');
 		}
