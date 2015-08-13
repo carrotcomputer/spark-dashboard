@@ -134,7 +134,7 @@ select{
   margin:5px 0;
   padding:10px;
 }
-.btn_sub, .btn_edit, .btn_help, .setEditInvoiceClass, .edit_btn_sub, .setEditHotLeadClass{
+.btn_sub, .btn_edit, .btn_help, .setEditInvoiceClass, .edit_btn_sub, .setEditHotLeadClass, .editClientHoldFinishedClass, .doneLeadCloseClass{
   background-color: #3D5AFE;
   border:none;
   padding:10px;
@@ -532,7 +532,7 @@ ul.grid > li:nth-of-type(2n+1) {
   min-height: 100px;
 }
 
-.revenue-output .btn_sub, .revenue-input .btn_sub {
+.revenue-output .btn_sub, .revenue-input .btn_sub,  {
   width: 20%;
 }
 
@@ -568,7 +568,7 @@ ul.grid > li:nth-of-type(2n+1) {
   float: right;
 }
 
-.editInvoiceClass, .editHotLeadClass, .editClientHoldClass {
+.editInvoiceClass, .editHotLeadClass, .editClientHoldClass, .editLeadCloseClass {
   background-color: green;
   width: 4%;
   float: right;

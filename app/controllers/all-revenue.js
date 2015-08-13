@@ -21,6 +21,7 @@ export default Ember.Controller.extend({
   clienthold: "",
   revenue: "",
   users: "",
+  check: false,
   isEditClientName: false,
   isEditMode: false,
   isRevenueEditMode: false,
@@ -51,7 +52,7 @@ export default Ember.Controller.extend({
     if(inv.get('invoiceName') === "") {
       alert('Error: You have left the textbox empty!');
     }
-      else {  
+    else {  
       if(inv.get('invoiceAmount') > 0) {
           this.set('invoiced.invoiceName', 'inv.invoiceName');
           this.set('invoiced.invoiceAmount', 'inv.invoiceAmount');
@@ -128,6 +129,45 @@ export default Ember.Controller.extend({
 		  client.deleteRecord();
       client.save();
 	  }
+  },
+  editLeadClose: function(clientEdit) {
+    clientEdit.set('isLeadToCloseEdit', true);
+  },
+  editLeadCloseName: function(client) {
+    if(client.get('leadName') === "") {
+        alert('You have inputted the data incorrectly!');
+    }
+    else {
+      var controller = this.get('leadstoclose');
+      client.save();
+      }
+  }, 
+  editLeadClosePrice: function(price) {
+    if(price.get('leadsPrice') > 0) {
+      price.save();
+    }
+    else {
+      alert('You have inputted the data incorrectly!');
+    }
+  },
+  doneLeadClose: function(client, price) {
+    var searchleadprices = client.get('leadstocloseprice');
+    var controller = this;
+    searchleadprices.forEach(function(price, clientEdit){
+      if(controller.get('price.leadsPrice') > 0) {        
+        price.set('leadsPrice', controller.get('price.leadsPrice'));
+        client.set('isLeadToCloseEdit', false);
+        client.save();
+      }
+      else {
+          controller.set('check', true);
+      }
+    });
+    if(this.get('check') === true) {
+      alert('You have inputted the data incorrectly!');
+      client.set('isLeadToCloseEdit', false);
+      client.save();
+    }
   },
   editHotLead: function(lead) {
       lead.set('isEditHotLead', true);

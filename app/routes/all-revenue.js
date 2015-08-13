@@ -25,6 +25,9 @@ setupController: function(controller){
     controller.set('clientholdprice', controller.store.find('clientholdprice'));
     controller.set('leadstoclose', controller.store.find('leadstoclose'));
     controller.set('leadstocloseprice', controller.store.find('leadstocloseprice'));
+    
+    controller.set('clienthold.isEditClientHold', false);
+    controller.set('leadstoclose.isLeadToCloseEdit', false);
    
     controller.store.find('config').then(function(data) {
      if(data.content.length === 0 || data.content.length === null) {
@@ -77,7 +80,6 @@ setupController: function(controller){
         controller.store.find('revenue').then(function(data){
           controller.set('revenue', data.get('firstObject'));
           controller.set('revenue.isRevenueEditMode', false);
-          controller.set('clienthold.isEditClientHold', false);
         });
       }
     },
