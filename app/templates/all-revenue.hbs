@@ -18,7 +18,7 @@
     <div class="revenue-output">              
       <ul>
         <li>Current Target: £{{revenue.currentTarget}} </li> 
-        <li>Amount Invoiced: £{{revenue.addedInvoicedAmount}} </li> 
+        <li>Amount Invoiced: £{{revenue.invoiceAmount}} </li> 
         <li>Amount Remaining: £{{revenue.remaining}} </li> 
       </ul> 
       <input type="submit" value="Edit" {{action 'editRevenue'}} class="edit_btn_sub">
@@ -94,11 +94,11 @@
     {{#if clientName.isEditClientHold}}
   <ul>
     <li>{{input type="text" class="inputText" value=clientName.onholdname}}</li>     
-    <button class="editClientHoldDoneClass" {{action "editClientHoldDone" clientName}} >Set New Name</button>
+    <button class="editClientHoldDoneClass" {{action "editClientHoldName" clientName}} >Set New Name</button>
     <li>
      {{#each clientPrice in clientName.clientholdprice}}
         {{input type="text" class="inputText" value=clientPrice.price}}
-        <button class="editClientHoldDoneClass" {{action "editClientHoldDone" clientPrice}} >Set Price</button>
+        <button class="editClientHoldDoneClass" {{action "editClientHoldPrice" clientPrice}} >Set Price</button>
      {{/each}}
     </li>      
   </ul>

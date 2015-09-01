@@ -101,13 +101,21 @@ export default Ember.Controller.extend({
   editClientHold: function(clientInfo) {
 	  clientInfo.set('isEditClientHold', true);
   },
-  editClientHoldDone: function(clienthold) {
-    if(clienthold.get('price') > 0 && clienthold.get('onholdname') !== "") {
+  editClientHoldName: function(clienthold) {
+    if(clienthold.get('onholdname') != "") {
         clienthold.save();
       }
       else {
-        alert('You have inputted the field incorrectly!');
+        alert('You have inputted the name field incorrectly!');
       }
+  },
+  editClientHoldPrice: function(clienthold) {
+    if(clienthold.get('price') > 0) {
+      clienthold.save();
+    }
+    else {
+      alert('You have inpuuted the price field incorrectly!');
+    }
   },
   editClientHoldFinish: function(clientInfo) {
     clientInfo.set('isEditClientHold', false);
