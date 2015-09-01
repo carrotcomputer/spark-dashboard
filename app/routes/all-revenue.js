@@ -2,6 +2,7 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
+  total: 0,
   model: function() {
   return this.store.find('allrevenue');
 },
@@ -20,7 +21,9 @@ setupController: function(controller){
 	  var clientholdprice = this.get('clientholdprice');
 	  var leadstoclose = this.get('leadstoclose');
 	  var leadstocloseprice = this.get('leadstocloseprice');
-	
+    var nav = this.get('nav');
+    var checkInvoice = this.store.find('invoiced');
+    
 	  controller.set('clienthold', controller.store.find('clienthold'));
     controller.set('clientholdprice', controller.store.find('clientholdprice'));
     controller.set('leadstoclose', controller.store.find('leadstoclose'));
@@ -28,26 +31,14 @@ setupController: function(controller){
     
     controller.set('clienthold.isEditClientHold', false);
     controller.set('leadstoclose.isLeadToCloseEdit', false);
-   
-    controller.store.find('config').then(function(data) {
-     if(data.content.length === 0 || data.content.length === null) {
-      var configCreate = controller.store.createRecord('config', {
-        isPageEdited: false,
-        isPageEditedTime: 0,
-        getPageEditDate: 0,
-        isCreated: true
-      });
-      configCreate.save().then(function(data) {
-        controller.set('config',data);
-      });
-    }
-    else {
-    controller.set('config', data.get('firstObject'));
-    controller.store.find('config').then(function(data){
-      controller.set('config', data.get('firstObject'));
+     
+    checkInvoice.forEach(function(invoiceditem){
+       var total = this.get('total');
+       total+= invoiceditem.invoiceAmount; 
+       console.log(total);
+       this.set('total', total)
     });
-    }
-  });
+    
     controller.store.find('invoiced').then(function(data){
       var invoices = data;
       var currentDate = new Date();
@@ -69,7 +60,8 @@ setupController: function(controller){
   			  currentTarget: 0,
   			  invoiced: 0,
           isRevenueEditMode: true,
-          dateCreated: 0
+          dateCreated: 0,
+          isDataPresent: false
   		  });
       newRevenue.save().then(function(data){
       controller.set('revenue', data);

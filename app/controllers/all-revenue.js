@@ -6,6 +6,7 @@ export default Ember.Controller.extend({
     currentRevenue: "",
     dateCreated: "",
     remaining: "",  
+    isDataPresent: false,
     },
   invoiced: {
     getInvoiceMonth: function(){
@@ -15,7 +16,6 @@ export default Ember.Controller.extend({
     
     invoiceTimeCreated: DS.attr('string')
   },
-  
   inv:"",
   lead:"",
   clienthold: "",
@@ -42,7 +42,7 @@ export default Ember.Controller.extend({
     deleteInvoice: function(inv) {
       if(confirm("Are you sure you want to remove client " + inv.get('invoiceName') + "?")){
         inv.deleteRecord();
-        inv.save();
+        inv.save();     
       }
     },
   editInvoice: function(inv) {
@@ -70,10 +70,11 @@ export default Ember.Controller.extend({
 	}, 
 	addRevenue: function() {
     var currentRevenue = this.get('revenue');
-    if (this.get('revenue.currentTarget') > 0 && this.get('revenue.invoiced') > 0)
+    if (this.get('revenue.currentTarget') > 0)
     {
       currentRevenue.set('dateCreated', new Date());
       currentRevenue.set('isRevenueEditMode', false);
+      currentRevenue.set('isDataPresent', true);
       currentRevenue.save();
   	}
     else {
@@ -154,20 +155,24 @@ export default Ember.Controller.extend({
     var searchleadprices = client.get('leadstocloseprice');
     var controller = this;
     searchleadprices.forEach(function(price, clientEdit){
-      if(controller.get('price.leadsPrice') > 0) {        
+      client.set('isLeadToCloseEdit', false);
+      client.save();
+     /* if(controller.get('price.leadsPrice') > 0) {        
         price.set('leadsPrice', controller.get('price.leadsPrice'));
         client.set('isLeadToCloseEdit', false);
         client.save();
       }
       else {
           controller.set('check', true);
-      }
+      }*/
     });
+    /*
     if(this.get('check') === true) {
       alert('You have inputted the data incorrectly!');
       client.set('isLeadToCloseEdit', false);
       client.save();
-    }
+    }*/
+      
   },
   editHotLead: function(lead) {
       lead.set('isEditHotLead', true);

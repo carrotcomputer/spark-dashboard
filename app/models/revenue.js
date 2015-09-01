@@ -5,10 +5,13 @@ export default DS.Model.extend({
   
 	currentTarget: DS.attr('number'),
 	invoiced: DS.attr('number'),
+  currentInvoicedAmount: DS.attr('number'),
+  
 	remaining: function(){
     return this.get('currentTarget') - this.get('invoiced');
 	}.property('currentTarget', 'invoiced'),
   dateCreated: DS.attr('string'),
+  isDataPresent: DS.attr('boolean', {defaultValue: false}),
   
   getMonth: function(){
     var target = moment(this.get('dateCreated'));
