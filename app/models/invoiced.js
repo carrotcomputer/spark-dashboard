@@ -3,7 +3,7 @@ import DS from 'ember-data';
 
 export default DS.Model.extend({
   invoiceName: DS.attr('string'),
-  invoiceAmount: DS.attr('number'),
+  invoiceAmount: DS.attr('number', {defaultValue: 0}),
   invoiceTimeCreated: DS.attr('string'),
   
   getInvoiceMonth: function(){

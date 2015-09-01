@@ -2,10 +2,11 @@ import Ember from 'ember';
 
 export
 default Ember.Controller.extend({
+  total: 0,
   invoiced: {
     invoiceName: "",
     invoiceAmount: "",
-    invoiceTimeCreated: ""
+    invoiceTimeCreated: "",
   },
     actions: {
       createInvoice: function() {
@@ -16,12 +17,12 @@ default Ember.Controller.extend({
             var invoiceGet = this.get('invoiced');
             var newInvoice = this.store.createRecord('invoiced',{
               invoiceName: this.get('invoiced.invoiceName'),
-              invoiceAmount: this.get('invoiced.invoiceAmount'),
+              invoiceAmount: parseInt(this.get('invoiced.invoiceAmount')),
             });
             newInvoice.set('invoiceTimeCreated', new Date());
-            var controller = this;
-            newInvoice.save().then(function(){
-            controller.transitionTo('all-revenue');
+            var superthis = this;
+            newInvoice.save().then(function(){              
+            superthis.transitionTo('all-revenue');
           });
           } 
           else {

@@ -4,6 +4,7 @@ export default Ember.Controller.extend({
   revenue: {
     currentTarget: "",
     currentRevenue: "",
+    invoiceAmount: "",
     dateCreated: "",
     remaining: "",  
     isDataPresent: false,

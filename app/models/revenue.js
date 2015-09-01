@@ -6,6 +6,7 @@ export default DS.Model.extend({
 	currentTarget: DS.attr('number'),
 	invoiced: DS.attr('number'),
   currentInvoicedAmount: DS.attr('number'),
+  invoiceAmount: DS.attr('number'),
   
 	remaining: function(){
     return this.get('currentTarget') - this.get('invoiced');
